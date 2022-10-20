@@ -1,0 +1,98 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/Header.astro";
+
+const { title } = Astro.props;
+const top = 0;
+---
+
+<BaseLayout title>
+    <div id="header-trigger"></div>
+    <div class="header-wrapper">
+        <Header />
+    </div>
+    <nav class="sidebar-wrapper"></nav>
+    <main>
+        <slot />
+    </main>
+
+    <style is:global>
+        html {
+            --header-height: 100px;
+        }
+        body {
+            display: grid;
+            grid-template-rows: var(--header-height) 1fr;
+            grid-template-columns: 100px 1fr;
+            min-height: 100vh;
+            transition: 0.25s;
+        }
+        #header-trigger {
+            grid-row: 1 / 2;
+            grid-column: 1 / -1;
+        }
+        .header-wrapper {
+            grid-row: 1 / 2;
+            grid-column: 1 / -1;
+            background-color: #51534a;
+            position: sticky;
+            top: 0;
+            overflow: hidden;
+        }
+        .sidebar-wrapper {
+            grid-row: 2 / -1;
+            grid-column: 1 / 2;
+            background-color: #702082;
+        }
+        main {
+            grid-row: 2 / -1;
+            grid-column: 2 / -1;
+            background-color: #fff;
+            align-self: stretch;
+        }
+        .exit-left {
+            transform: translateX(-100%);
+        }
+        .full-width {
+            grid-column-start: 1;
+        }
+    </style>
+
+    <script client:load>
+        //MAKE HEADER SHRINK ON SCROLL
+
+        const html = document.documentElement;
+        const headerTrigger = document.querySelector("#header-trigger");
+
+        let options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 1,
+        };
+
+        const obsCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    html.style.setProperty("--header-height", "60px");
+                    console.log("not intersecting");
+                } else {
+                    html.style.setProperty("--header-height", "100px");
+                    console.log("intersecting");
+                }
+            });
+        };
+
+        let headerObserver = new IntersectionObserver(obsCallback, options);
+        headerObserver.observe(headerTrigger);
+
+        //TOGGLE SIDEBAR ON CLICK
+
+        const sidebarWrapper = document.querySelector(".sidebar-wrapper");
+        const main = document.querySelector("main");
+
+        sidebarToggle.addEventListener("click", () => {
+            sidebarWrapper.classList.toggle("exit-left");
+            main.classList.toggle("full-width");
+        });
+    </script>
+</BaseLayout>

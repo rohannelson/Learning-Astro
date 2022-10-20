@@ -1,0 +1,166 @@
+---
+import lgdlogo from "../images/lgdsm.png";
+import anchlogo from "../images/anchsm.png";
+import sixeightwlogo from "../images/68wsm.png";
+---
+
+<header id="headernavid">
+    <nav>
+        <a href="https://livinggracedianella.org.au">
+            <img src={lgdlogo} alt="Living Grace Dianella logo" />
+        </a>
+        <a href="https://anchorage.org.au">
+            <img src={anchlogo} alt="The Anchorage Collective logo" />
+        </a>
+        <a href="https://68waverley.org.au">
+            <img src={sixeightwlogo} alt="68 Waverley logo" />
+        </a>
+    </nav>
+    <div>DIANELLA CHURCH OF CHRIST INC.</div>
+</header>
+<div id="header-trigger">&nbsp;</div>
+
+<script is:inline>
+    const headerNav = document.querySelector("header");
+    const headerTrigger = document.querySelector("#header-trigger");
+    const sideBar = document.querySelector("#sidebar");
+    const sideButtonWrapper = document.querySelector("#sidebar-toggle-wrapper");
+
+    /*Makes header contract when scroll down from top and expand when scroll back using intersection observer.
+The target must be a descendant of the root element - for some reason the header doesn't seem to count as the descendant of body (position: fixed doesn't get observed or something)
+You can use a placeholder element at the top of the page to detect when you're at the top or not.*/
+
+    let options = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.75,
+    };
+
+    const obsCallback = (entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+                headerTrigger.classList.add("scrolled");
+                headerNav.classList.add("scrolled");
+                sideBar.classList.add("scrolled");
+                sideButtonWrapper.classList.add("scrolled");
+            } else {
+                headerTrigger.classList?.remove("scrolled");
+                headerNav.classList.remove("scrolled");
+                sideBar.classList.remove("scrolled");
+                sideButtonWrapper.classList.remove("scrolled");
+            }
+        });
+    };
+
+    let headerObserver = new IntersectionObserver(obsCallback, options);
+    headerObserver.observe(document.querySelector("#header-trigger"));
+</script>
+
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        border-spacing: 0px;
+        border-collapse: collapse;
+        box-sizing: border-box;
+        table-layout: auto;
+        font-family: "Source Sans Pro", sans-serif;
+        color: #51534a;
+    }
+
+    :root {
+        --header-height: 15em;
+        --unscrolled-font-size: 10px;
+        --scrolled-font-size: 5px;
+        --sidebar-width: max(20%, 200px);
+        scroll-padding-top: 60px;
+        font-size: 10px;
+    }
+
+    /*********** LARGE - 916+ designing for 1280-1536px **********/
+    /*** HEADER STYLES ***/
+
+    header {
+        font-size: var(--responsive-font-size);
+        height: var(--header-height);
+        background-color: #51534a;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        transition: 0.25s;
+    }
+
+    header.scrolled {
+        font-size: var(--scrolled-font-size);
+    }
+
+    header nav {
+        display: flex;
+        justify-content: center;
+        padding-top: 1em;
+    }
+
+    img {
+        height: 9em;
+        margin: 0px 0.4em;
+    }
+
+    header div {
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+        color: white;
+        font-size: 3.5em;
+        font-weight: 700;
+        font-family: "Montserrat", sans-serif;
+    }
+
+    #header-trigger {
+        height: 150px;
+        transition: 0.25s;
+    }
+
+    div.scrolled {
+        height: 130px;
+    }
+    /*********** MEDIUM - 640-915px designing for 760-900px ************/
+
+    @media (max-width: 915px) {
+        /*** HEADER STYLES ***/
+        :root {
+            --unscrolled-font-size: 8px;
+        }
+
+        header {
+            font-size: var(--unscrolled-font-size);
+        }
+
+        #header-trigger {
+            height: 120px;
+        }
+    }
+    /*********** SMALL - 320-639 designing for 360-414px ***********/
+
+    @media (max-width: 639px) {
+        :root {
+            --unscrolled-font-size: 6px;
+            --scrolled-font-size: 4px;
+            scroll-padding-top: 45px;
+        }
+    }
+    /*** HEADER STYLES ***/
+
+    header,
+    nav#sidebar {
+        font-size: var(--unscrolled-font-size);
+    }
+
+    header.scrolled,
+    nav#sidebar.scrolled {
+        font-size: var(--scrolled-font-size);
+    }
+
+    #header-trigger {
+        height: 100px;
+    }
+</style>
