@@ -11,19 +11,25 @@ const top = 0;
     <div class="header-wrapper">
         <Header />
     </div>
-    <nav class="sidebar-wrapper"></nav>
+    <nav class="sidebar-wrapper">
+        <ul>
+            <li>Dummy content</li>
+        </ul>
+    </nav>
     <main>
         <slot />
     </main>
 
     <style is:global>
         html {
-            --header-height: 100px;
+            font-size: 10px;
+            --header-height: 12em;
+            --main-left-offset: 150px;
         }
         body {
             display: grid;
-            grid-template-rows: var(--header-height) 1fr;
-            grid-template-columns: 100px 1fr;
+            grid-template-rows: var(--header-height) 1fr auto;
+            grid-template-columns: var(--main-left-offset) 1fr;
             min-height: 100vh;
             transition: 0.25s;
         }
@@ -38,31 +44,58 @@ const top = 0;
             position: sticky;
             top: 0;
             overflow: hidden;
+            z-index: 3;
+            font-size: 10px;
+            transition: 0.25s;
+        }
+        .header-wrapper.scrolled {
+            font-size: 7.5px;
         }
         .sidebar-wrapper {
             grid-row: 2 / -1;
             grid-column: 1 / 2;
             background-color: #702082;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            max-height: calc(100vh - var(--header-height));
+            transition: 0.25s;
+            position: sticky;
+            top: var(--header-height);
         }
         main {
             grid-row: 2 / -1;
             grid-column: 2 / -1;
             background-color: #fff;
             align-self: stretch;
+            font-size: 1.6em;
         }
         .exit-left {
             transform: translateX(-100%);
+            transition: 0.25s;
         }
-        .full-width {
-            grid-column-start: 1;
+        @media (min-width: 640px) {
+            .sidebar-wrapper {
+                /*position: sticky;
+                top: var(--header-height);*/
+            }
+        }
+
+        @media (max-width: 639px) {
+            .sidebar-wrapper {
+                grid-column: 1 / -1;
+                z-index: 2;
+            }
         }
     </style>
 
-    <script client:load>
+    <script>
         //MAKE HEADER SHRINK ON SCROLL
 
         const html = document.documentElement;
         const headerTrigger = document.querySelector("#header-trigger");
+        const headerHeightInit = html.style.getPropertyValue("--header-height");
+        const headerWrapper = document.querySelector(".header-wrapper");
 
         let options = {
             root: null,
@@ -73,11 +106,13 @@ const top = 0;
         const obsCallback = (entries) => {
             entries.forEach((entry) => {
                 if (!entry.isIntersecting) {
-                    html.style.setProperty("--header-height", "60px");
+                    html.style.setProperty("--header-height", "9em");
                     console.log("not intersecting");
+                    headerWrapper.classList.add("scrolled");
                 } else {
-                    html.style.setProperty("--header-height", "100px");
+                    html.style.setProperty("--header-height", headerHeightInit);
                     console.log("intersecting");
+                    headerWrapper.classList.remove("scrolled");
                 }
             });
         };
@@ -93,6 +128,18 @@ const top = 0;
         sidebarToggle.addEventListener("click", () => {
             sidebarWrapper.classList.toggle("exit-left");
             main.classList.toggle("full-width");
+
+            let offset = html.style.getPropertyValue("--main-left-offset");
+            console.log(offset);
+            if (offset === "0px") {
+                html.style.setProperty("--main-left-offset", "150px");
+            } else {
+                html.style.setProperty("--main-left-offset", "0px");
+            }
         });
+
+        //NEED SIDEBAR TO DISMISS IF LINK CLICKED WHEN WIDTH IS LESS THAN 639PX
+        if (window.matchMedia("(max-width: 639px)")) {
+        }
     </script>
 </BaseLayout>
