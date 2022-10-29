@@ -1,20 +1,12 @@
 ---
 ---
 
-<div id="sidebar-toggle-wrapper">
-    <button type="button" id="sidebar-toggle" class="arrow">
-        <div></div>
-        <div></div>
-        <div></div>
-    </button>
-</div>
+<button type="button" id="sidebar-toggle" class="arrow">
+    <div></div>
+    <div></div>
+    <div></div>
+</button>
 <style>
-    #sidebar-toggle-wrapper {
-        /*font-size: var(--responsive-font-size);*/
-        transition: 0.25s;
-        z-index: 10;
-    }
-
     #sidebar-toggle {
         width: 5em;
         height: 5em;
@@ -22,13 +14,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        border-radius: 0 10px 10px 0;
+        border-radius: 10px 10px 0px 0px;
         background-color: #702082;
         border: solid #702082 1px;
-    }
-
-    #sidebar-toggle-wrapper.scrolled {
-        /*font-size: var(--scrolled-font-size);*/
+        transition: 0.25s;
     }
 
     #sidebar-toggle div {
@@ -68,18 +57,4 @@
         transform: rotate(45deg);
         margin: 0 2.5em 0.6em 0;
     }
-
-    #sidebar-toggle-wrapper.active {
-        left: 0px;
-    }
 </style>
-<script client:load>
-    const sidebarToggle = document.querySelector("#sidebar-toggle");
-    const sideButtonWrapper = document.querySelector("#sidebar-toggle-wrapper");
-    sidebarToggle.addEventListener("click", () => {
-        sidebarToggle.classList.toggle("active");
-        sideButtonWrapper.classList.toggle("active");
-        sidebarToggle.classList.toggle("arrow");
-        sidebarToggle.classList.toggle("hamburger");
-    });
-</script>

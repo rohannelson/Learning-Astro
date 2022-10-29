@@ -1,30 +1,37 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import SidebarToggle from "../components/SidebarToggle.astro";
 import Header from "../components/Header.astro";
+import TableofContents from "../components/TableofContents.astro";
 
-const { title } = Astro.props;
+const { title } = Astro.props.frontmatter || Astro.props;
+const { headings } = Astro.props;
 const top = 0;
 ---
 
 <BaseLayout title>
     <div id="header-trigger"></div>
+    <div class="toggle-wrapper">
+        <SidebarToggle />
+    </div>
     <div class="header-wrapper">
         <Header />
     </div>
     <nav class="sidebar-wrapper">
-        <ul>
-            <li>Dummy content</li>
-        </ul>
+        <TableofContents headings={headings} />
     </nav>
     <main>
-        <slot />
+        <div class="main-wrapper-inner">
+            <slot />
+        </div>
     </main>
 
     <style is:global>
         html {
             font-size: 10px;
-            --header-height: 12em;
-            --main-left-offset: 150px;
+            --header-height: 15em;
+            --main-left-offset: 200px;
+            scroll-padding-top: 10em;
         }
         body {
             display: grid;
@@ -33,6 +40,22 @@ const top = 0;
             min-height: 100vh;
             transition: 0.25s;
         }
+        .toggle-wrapper {
+            grid-row: 1/2;
+            grid-column: 1/2;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            z-index: 12;
+            position: sticky;
+            top: 0;
+            min-width: fit-content;
+        }
+
+        .toggle-wrapper.scrolled {
+            font-size: 9px;
+        }
+
         #header-trigger {
             grid-row: 1 / 2;
             grid-column: 1 / -1;
@@ -45,7 +68,7 @@ const top = 0;
             top: 0;
             overflow: hidden;
             z-index: 3;
-            font-size: 10px;
+            font-size: 12.5px;
             transition: 0.25s;
         }
         .header-wrapper.scrolled {
@@ -62,13 +85,20 @@ const top = 0;
             transition: 0.25s;
             position: sticky;
             top: var(--header-height);
+            overflow-y: scroll;
         }
         main {
             grid-row: 2 / -1;
             grid-column: 2 / -1;
             background-color: #fff;
-            align-self: stretch;
             font-size: 1.6em;
+        }
+        .main-wrapper-inner {
+            max-width: 750px;
+            padding: 0 2vw;
+            margin: 20px auto;
+            background-color: #faf9f5;
+            height: calc(100% - 40px);
         }
         .exit-left {
             transform: translateX(-100%);
@@ -86,6 +116,13 @@ const top = 0;
                 grid-column: 1 / -1;
                 z-index: 2;
             }
+            .toggle-wrapper,
+            .toggle-wrapper.scrolled {
+                font-size: 7.5px;
+            }
+            main {
+                grid-column: 1 / -1;
+            }
         }
     </style>
 
@@ -96,6 +133,7 @@ const top = 0;
         const headerTrigger = document.querySelector("#header-trigger");
         const headerHeightInit = html.style.getPropertyValue("--header-height");
         const headerWrapper = document.querySelector(".header-wrapper");
+        const toggleWrapper = document.querySelector(".toggle-wrapper");
 
         let options = {
             root: null,
@@ -109,10 +147,12 @@ const top = 0;
                     html.style.setProperty("--header-height", "9em");
                     console.log("not intersecting");
                     headerWrapper.classList.add("scrolled");
+                    toggleWrapper.classList.add("scrolled");
                 } else {
                     html.style.setProperty("--header-height", headerHeightInit);
                     console.log("intersecting");
                     headerWrapper.classList.remove("scrolled");
+                    toggleWrapper.classList.remove("scrolled");
                 }
             });
         };
@@ -122,24 +162,53 @@ const top = 0;
 
         //TOGGLE SIDEBAR ON CLICK
 
+        const sidebarToggle = document.querySelector("#sidebar-toggle");
         const sidebarWrapper = document.querySelector(".sidebar-wrapper");
-        const main = document.querySelector("main");
+        const mainLeftOffsetInit =
+            html.style.getPropertyValue("--main-left-offset");
 
-        sidebarToggle.addEventListener("click", () => {
+        const collapseSidebar = () => {
+            sidebarToggle.classList.toggle("arrow");
+            sidebarToggle.classList.toggle("hamburger");
             sidebarWrapper.classList.toggle("exit-left");
-            main.classList.toggle("full-width");
-
+        };
+        const adjustColumnTwo = () => {
             let offset = html.style.getPropertyValue("--main-left-offset");
-            console.log(offset);
             if (offset === "0px") {
-                html.style.setProperty("--main-left-offset", "150px");
+                html.style.setProperty(
+                    "--main-left-offset",
+                    mainLeftOffsetInit
+                );
             } else {
                 html.style.setProperty("--main-left-offset", "0px");
             }
+        };
+
+        sidebarToggle.addEventListener("click", () => {
+            collapseSidebar();
+            adjustColumnTwo();
         });
 
         //NEED SIDEBAR TO DISMISS IF LINK CLICKED WHEN WIDTH IS LESS THAN 639PX
-        if (window.matchMedia("(max-width: 639px)")) {
-        }
+        /*const mql = window.matchMedia("(max-width: 639px)");
+        const sideLinks = document.querySelectorAll(".btn-wrapper a");
+        console.log(sideLinks);
+        mql.addEventListener("change", (e) => {
+            if (e.matches) {
+                console.log("matches");
+                sideLinks.forEach((sidelink) => {
+                    sidelink.addEventListener("click", collapseSidebar);
+                });
+            }
+        });*/
+        const sideLinks = document.querySelectorAll(".btn-wrapper a");
+        sideLinks.forEach((sidelink) => {
+            sidelink.addEventListener("click", () => {
+                let mql = window.matchMedia("(max-width: 639px)");
+                if (mql.matches) {
+                    collapseSidebar();
+                }
+            });
+        });
     </script>
 </BaseLayout>
