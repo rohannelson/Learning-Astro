@@ -3,9 +3,12 @@ import BaseLayout from "./BaseLayout.astro";
 import SidebarToggle from "../components/SidebarToggle.astro";
 import Header from "../components/Header.astro";
 import TableofContents from "../components/TableofContents.astro";
+import DocControlTable from "../components/DocControlTable.astro";
+import VersionControlTable from "../components/VersionControlTable.astro";
 
-const { title } = Astro.props.frontmatter || Astro.props;
 const { headings } = Astro.props;
+const { frontmatter } = Astro.props;
+const { title } = Astro.props.frontmatter || Astro.props;
 const top = 0;
 ---
 
@@ -22,7 +25,9 @@ const top = 0;
     </nav>
     <main>
         <div class="main-wrapper-inner">
+            <DocControlTable frontmatter={frontmatter} />
             <slot />
+            <VersionControlTable frontmatter={frontmatter} />
         </div>
     </main>
 
@@ -70,6 +75,7 @@ const top = 0;
             z-index: 3;
             font-size: 12.5px;
             transition: 0.25s;
+            box-shadow: var(--main-left-offset) 1px #fff;
         }
         .header-wrapper.scrolled {
             font-size: 7.5px;
