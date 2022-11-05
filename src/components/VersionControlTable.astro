@@ -18,22 +18,21 @@ frontmatter.versions.forEach((version) => {
 ---
 
 <h2>Version History</h2>
-<table set:html={tableContents} class="versionControlTable">
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        :global(.versionControlTable th) {
-            background-color: #51534a;
-            color: #fff;
-            text-align: left;
-            font-weight: normal;
-        }
+<table set:html={tableContents} class="versionControlTable"></table>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    :global(.versionControlTable th) {
+        background-color: #51534a;
+        color: #fff;
+        text-align: left;
+        font-weight: normal;
+    }
 
-        :global(.versionControlTable th, .versionControlTable td) {
-            border: 1px solid black;
-            padding: 5px;
-        }
-    </style>
-</table>
+    :global(.versionControlTable th, .versionControlTable td) {
+        border: 1px solid black;
+        padding: 5px;
+    }
+</style>
