@@ -2,61 +2,38 @@
 const { frontmatter } = Astro.props;
 console.log(frontmatter.versions);
 
+let tableContents = [
+    `<tr><th> Version:</th><th> Date Approved:</th><th> Date Effective</th><th> Changes Made</th></tr>`,
+];
+
 frontmatter.versions.forEach((version) => {
+    let row = [`<tr>`];
     version.forEach((detail) => {
-        console.log(detail);
+        row.push(`<td>` + detail + `</td>`);
     });
+    row.push(`</tr>`);
+    console.log(row);
+    tableContents.push(row.join(""));
 });
 ---
 
 <h2>Version History</h2>
-<table>
-    <tr>
-        <th> Version:</th>
-        <th> Date Approved:</th>
-        <th> Date Effective</th>
-        <th> Changes Made</th>
-    </tr>
-    <tr>
-        <td> 1.00</td>
-        <td> 14/12/2021</td>
-        <td> 15/12/2021</td>
-        <td> Initial approval</td>
-    </tr>
-    <tr>
-        <td> &nbsp;</td>
-        <td> &nbsp;</td>
-        <td> &nbsp;</td>
-        <td> &nbsp;</td>
-    </tr>
-    <tr>
-        <td> &nbsp;</td>
-        <td> &nbsp;</td>
-        <td> &nbsp;</td>
-        <td> &nbsp;</td>
-    </tr>
-    <tr>
-        <td> &nbsp;</td>
-        <td> &nbsp;</td>
-        <td> &nbsp;</td>
-        <td> &nbsp;</td>
-    </tr>
-</table>
-<style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    th {
-        background-color: #51534a;
-        color: #fff;
-        text-align: left;
-        font-weight: normal;
-    }
+<table set:html={tableContents} class="versionControlTable">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        :global(.versionControlTable th) {
+            background-color: #51534a;
+            color: #fff;
+            text-align: left;
+            font-weight: normal;
+        }
 
-    th,
-    td {
-        border: 1px solid black;
-        padding: 5px;
-    }
-</style>
+        :global(.versionControlTable th, .versionControlTable td) {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</table>
