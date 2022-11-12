@@ -19,6 +19,15 @@ const { title } = Astro.props;
     </head>
     <body>
         <slot />
+        <style is:global>
+            :root {
+                font-family: "Source Sans Pro", sans-serif;
+            }
+            h1,
+            h2 {
+                font-family: "Montserrat", sans-serif;
+            }
+        </style>
         <style>
             /* RESET STYLES */
             /* Document
@@ -376,17 +385,6 @@ const { title } = Astro.props;
 
             :global([hidden]) {
                 display: none;
-            }
-        </style>
-        <style>
-            :root {
-                font-family: "Source Sans Pro", sans-serif;
-            }
-            h1,
-            h2,
-            h3,
-            h4 {
-                font-family: "Montserrat", sans-serif;
             }
         </style>
     </body>

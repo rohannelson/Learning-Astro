@@ -25,6 +25,7 @@ const top = 0;
     </nav>
     <main>
         <div class="main-wrapper-inner">
+            <h1>{title}</h1>
             <DocControlTable frontmatter={frontmatter} />
             <slot />
             <VersionControlTable frontmatter={frontmatter} />
@@ -32,6 +33,7 @@ const top = 0;
     </main>
 
     <style is:global>
+        /* LAYOUT STYLEING */
         html {
             font-size: 10px;
             --header-height: 15em;
@@ -133,6 +135,74 @@ const top = 0;
             main {
                 grid-column: 1 / -1;
             }
+        }
+    </style>
+    <style is:global>
+        /* MAIN TEXT STYLING */
+        :root {
+            color: #51534a;
+        }
+
+        main h1 {
+            font-weight: 700;
+            font-size: clamp(26px, 20.537px + 0.597vw, 32px);
+            color: #702082;
+            grid-row: 2;
+            margin: 0;
+            padding: 2rem 0 2rem 0;
+            text-transform: uppercase;
+        }
+
+        main h2 {
+            font-weight: 500;
+            font-size: clamp(26px, 20.537px + 0.597vw, 32px);
+            color: #702082;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            margin-top: 3rem;
+        }
+
+        main h2 ~ p {
+            line-height: 150%;
+            margin: 0 0 15px 0;
+        }
+
+        main ul {
+            margin: 0 auto 0 auto;
+        }
+
+        main h3 {
+            color: #00629b;
+            margin-left: 20px;
+            text-transform: uppercase;
+            margin-top: 1.4rem;
+            margin-bottom: 0.4rem;
+        }
+
+        main h3 ~ p {
+            margin-left: 20px;
+        }
+
+        main h4 {
+            /* Always nest in an ordered list */
+            color: #702082;
+            margin-left: 20px;
+            margin-top: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        main h4 ~ p {
+        }
+
+        main h4 ~ ul > li {
+            list-style: none;
+        }
+
+        main li {
+            padding-bottom: 1rem;
+        }
+        main li ul {
+            padding-top: 1rem;
         }
     </style>
 
