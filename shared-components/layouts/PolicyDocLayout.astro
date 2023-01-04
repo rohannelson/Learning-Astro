@@ -248,9 +248,11 @@ const top = 0;
             html.style.getPropertyValue("--main-left-offset");
 
         const collapseSidebar = () => {
+            console.log("component-library", sidebarToggle.classList);
             sidebarToggle.classList.toggle("arrow");
             sidebarToggle.classList.toggle("hamburger");
             sidebarWrapper.classList.toggle("exit-left");
+            console.log("component-library end", sidebarToggle.classList);
         };
         const adjustColumnTwo = () => {
             let offset = html.style.getPropertyValue("--main-left-offset");
