@@ -1,0 +1,9 @@
+:root {
+    font-size: 10px;
+    --primary-color: #51534a;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
