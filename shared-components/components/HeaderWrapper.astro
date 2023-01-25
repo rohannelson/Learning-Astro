@@ -1,7 +1,15 @@
 ---
+const { textLogo, logoAltText, homePageURL } = Astro.props;
 ---
 
-<header class="header-wrapper"></header>
+<header class="header-wrapper">
+    <div>
+        <a href={homePageURL} target="_blank">
+            <img src={textLogo} alt={logoAltText} />
+        </a>
+    </div>
+    <slot />
+</header>
 <div id="header-trigger"></div>
 
 <style>
@@ -16,6 +24,7 @@
         width: 100%;
         transition: 0.25s;
         opacity: 0.8;
+        display: flex;
     }
 
     #header-trigger {
@@ -25,6 +34,12 @@
 
     .scrolled {
         opacity: 1;
+    }
+
+    img {
+        height: var(--header-height);
+        transition: 0.25s;
+        padding-left: max(20px, 2vw);
     }
 </style>
 
