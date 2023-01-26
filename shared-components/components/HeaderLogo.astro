@@ -1,0 +1,15 @@
+---
+const { textLogo, logoAltText } = Astro.props;
+---
+
+<a href={Astro.site}>
+    <img src={textLogo} alt={logoAltText} />
+</a>
+
+<style>
+    img {
+        height: var(--header-height);
+        transition: 0.25s;
+        padding-left: max(20px, 2vw);
+    }
+</style>

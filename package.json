@@ -7,6 +7,5 @@
     "shared-components",
     "websites/*"
   ],
-  "scripts": {},
-  "dependencies": {}
+  "scripts": {}
 }
