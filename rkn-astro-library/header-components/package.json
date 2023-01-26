@@ -1,0 +1,20 @@
+{
+  "name": "@rkn/header-components",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "header components for astro websites",
+  "exports": {
+    ".": "./index.js"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'hello world'"
+  },
+  "keywords": [
+    "components",
+    "header",
+    "astro"
+  ],
+  "author": "Rohan Nelson",
+  "license": "ISC"
+}

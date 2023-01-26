@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "private": true,
   "workspaces": [
-    "shared-components",
+    "shared-components/",
+    "rkn-astro-library/*",
     "websites/*"
   ],
   "scripts": {}

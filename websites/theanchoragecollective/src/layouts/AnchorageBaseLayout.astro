@@ -1,6 +1,7 @@
 ---
-import { HeaderWrapper } from "@rkn/shared-components";
-import { HeaderLogo } from "@rkn/shared-components";
+import { HeaderWrapper } from "@rkn/header-components";
+import { HeaderLogo } from "@rkn/header-components";
+import { HeaderNav } from "@rkn/header-components";
 import "../styles/normalize.css";
 import "../styles/global.css";
 import textLogo from "../images/AnchorageTextLogo.png";
@@ -8,4 +9,5 @@ import textLogo from "../images/AnchorageTextLogo.png";
 
 <HeaderWrapper>
     <HeaderLogo textLogo={textLogo} logoAltText="Anchorage Collective Logo" />
+    <HeaderNav />
 </HeaderWrapper>
