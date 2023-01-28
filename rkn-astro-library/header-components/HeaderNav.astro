@@ -1,33 +1,119 @@
 ---
+//Can use checkbox with label for toggleable menu
+//Can also use button
+//Go with position: relative? They're also using position absolute a lot...
+//opacity: 0 as a way of hiding something
+//How to architect this? What about HeaderNavWrapper, HeaderNavItem, HeaderNavDropdown? This breaks the problem into discreet chunks.
+//area-haspopup="true" aria-expanded="false" lets screen readers no if they click, a submenu will pop up.
 ---
 
 <nav>
-    <ul>
-        <li><a>item</a></li>
-        <li><a>item</a></li>
-        <li><a>item</a></li>
+    <ul class="headerNavMainList">
+        <li class="headerNavSingleItem"><a>item</a></li>
+        <li class="headerNavSingleItem"><a>item</a></li>
+        <li class="headerNavDropdownWrapper">
+            <button type="button" class="headerNavDropdownButton">item</button>
+            <ul class="headerNavDropdownList hidden">
+                <li class="headerNavDropdownItem">item</li>
+                <li class="headerNavDropdownItem">item</li>
+                <li class="headerNavDropdownItem">item</li>
+            </ul>
+        </li>
     </ul>
 </nav>
 
 <style>
+    /*Clamp value to manually centre Nav based on header height changes.
+    Align-items makes the list items centred*/
     nav {
-        margin: auto;
+        margin: 0px auto 0px auto;
+        display: flex;
+        align-items: center;
+        transition: 0.25s;
+        align-self: start;
+        position: relative;
+        top: clamp(10px, -25px + (var(--header-height) / 2), 25px);
     }
+    /*GENERAL LIST AND BUTTON STYLES*/
     ul {
         display: flex;
         font-size: 1.4rem;
         list-style: none;
-        color: white;
     }
-    li {
+    li,
+    button {
         font-family: Montserrat;
         text-transform: uppercase;
         font-weight: 700;
+        /*background-color: gray;*/
+        color: white;
+        flex-basis: 50px;
     }
-    li:not(:last-child):after {
+    button {
+        padding: 0px 1vw 0px 1vw;
+    }
+    li {
+        display: flex;
+        align-items: center;
+    }
+
+    /*MAINLIST ITEM STYLES - '|' in between items*/
+    .headerNavMainList > li:not(:last-of-type):after {
+        padding-left: 1vw;
         content: "|";
         font-weight: 400;
-        padding-left: 1.5vw;
-        padding-right: 1.5vw;
+    }
+
+    /*SINGLEITEM STYLES*/
+    li.headerNavSingleItem {
+        padding-left: 1vw;
+    }
+    li.headerNavSingleItem:last-of-type {
+        padding-right: 1vw;
+    }
+
+    li.headerNavSingleItem {
+        max-height: 50px;
+    }
+    /*HEADERNAVDROPDOWN STYLES*/
+    li.headerNavDropdownWrapper {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+    }
+    ul.headerNavDropdownList {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--primary-color);
+        padding: 0px 1vw 0px 1vw;
+        position: relative;
+        top: clamp(10px, -25px + (var(--header-height) / 2), 25px);
+        transition: 0.25s;
+    }
+    ul.hidden {
+        display: none;
+    }
+    /*DROPDOWN ITEM STYLES*/
+    li.headerNavDropdownItem {
+        flex-basis: 40px;
+    }
+    /*Removing default button styling*/
+    button {
+        display: inline-block;
+        border: none;
+        text-decoration: none;
+        font-size: 1.4rem;
+        cursor: pointer;
+        text-align: center;
+        background-color: var(--primary-color);
     }
 </style>
+<script>
+    const headerNavButton = document.querySelector(".headerNavDropdownButton");
+    const headerNavDropdownList = document.querySelector(
+        ".headerNavDropdownList"
+    );
+    headerNavButton.addEventListener("click", () => {
+        headerNavDropdownList.classList.toggle("hidden");
+    });
+</script>

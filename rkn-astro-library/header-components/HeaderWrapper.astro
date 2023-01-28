@@ -19,11 +19,10 @@
         transition: 0.25s;
         opacity: 0.8;
         display: flex;
-        align-content: center;
     }
-
+    /*extra 8px on height to stop glitch when scrolling at certain sizes*/
     #header-trigger {
-        height: var(--header-height);
+        height: calc(var(--header-height) + 8px);
         transition: 0.25s;
     }
 
@@ -45,7 +44,7 @@
     const obsCallback = (entries) => {
         entries.forEach((entry) => {
             if (!entry.isIntersecting) {
-                html.style.setProperty("--header-height", "7em");
+                html.style.setProperty("--header-height", "7rem");
                 console.log("not intersecting");
                 headerWrapper.classList.add("scrolled");
             } else {
