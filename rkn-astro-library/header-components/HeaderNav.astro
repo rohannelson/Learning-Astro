@@ -5,13 +5,22 @@
 //opacity: 0 as a way of hiding something
 //How to architect this? What about HeaderNavWrapper, HeaderNavItem, HeaderNavDropdown? This breaks the problem into discreet chunks.
 //area-haspopup="true" aria-expanded="false" lets screen readers no if they click, a submenu will pop up.
+import HeaderNavSingleItem from "./HeaderNavSingleItem.astro";
+import HeaderNavDropdown from "./HeaderNavDropdown.astro";
 ---
 
 <nav>
     <ul class="headerNavMainList">
-        <li class="headerNavSingleItem"><a>item</a></li>
-        <li class="headerNavSingleItem"><a>item</a></li>
-        <li class="headerNavDropdownWrapper">
+        <HeaderNavSingleItem itemhref="#" itemName="item 1" component />
+        <HeaderNavSingleItem itemhref="#" itemName="item 2" component />
+        <HeaderNavSingleItem itemhref="#" itemName="item 3" component />
+        <HeaderNavDropdown />
+    </ul>
+</nav>
+
+<style>
+    /*
+    <li class="headerNavDropdownWrapper">
             <button type="button" class="headerNavDropdownButton">item</button>
             <ul class="headerNavDropdownList hidden">
                 <li class="headerNavDropdownItem">item</li>
@@ -19,10 +28,7 @@
                 <li class="headerNavDropdownItem">item</li>
             </ul>
         </li>
-    </ul>
-</nav>
-
-<style>
+    /*
     /*Clamp value to manually centre Nav based on header height changes.
     Align-items makes the list items centred*/
     nav {
@@ -40,12 +46,12 @@
         font-size: 1.4rem;
         list-style: none;
     }
-    li,
+    /*li,
     button {
         font-family: Montserrat;
         text-transform: uppercase;
         font-weight: 700;
-        /*background-color: gray;*/
+        background-color: gray;
         color: white;
         flex-basis: 50px;
     }
@@ -57,7 +63,7 @@
         align-items: center;
     }
 
-    /*MAINLIST ITEM STYLES - '|' in between items*/
+    MAINLIST ITEM STYLES - '|' in between items
     .headerNavMainList > li:not(:last-of-type):after {
         padding-left: 1vw;
         content: "|";
@@ -65,7 +71,7 @@
     }
 
     /*SINGLEITEM STYLES*/
-    li.headerNavSingleItem {
+    /*li.headerNavSingleItem {
         padding-left: 1vw;
     }
     li.headerNavSingleItem:last-of-type {
@@ -75,7 +81,7 @@
     li.headerNavSingleItem {
         max-height: 50px;
     }
-    /*HEADERNAVDROPDOWN STYLES*/
+    HEADERNAVDROPDOWN STYLES
     li.headerNavDropdownWrapper {
         display: flex;
         flex-direction: column;
@@ -93,11 +99,11 @@
     ul.hidden {
         display: none;
     }
-    /*DROPDOWN ITEM STYLES*/
+    DROPDOWN ITEM STYLES
     li.headerNavDropdownItem {
         flex-basis: 40px;
     }
-    /*Removing default button styling*/
+    /*Removing default button styling
     button {
         display: inline-block;
         border: none;
@@ -106,14 +112,14 @@
         cursor: pointer;
         text-align: center;
         background-color: var(--primary-color);
-    }
+    }*/
 </style>
 <script>
-    const headerNavButton = document.querySelector(".headerNavDropdownButton");
+    /*const headerNavButton = document.querySelector(".headerNavDropdownButton");
     const headerNavDropdownList = document.querySelector(
         ".headerNavDropdownList"
     );
     headerNavButton.addEventListener("click", () => {
         headerNavDropdownList.classList.toggle("hidden");
-    });
+    });*/
 </script>

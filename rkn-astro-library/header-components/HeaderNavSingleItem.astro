@@ -1,0 +1,32 @@
+---
+const { itemhref, itemName } = Astro.props;
+---
+
+<li><a href={itemhref}>{itemName}</a></li>
+
+<style>
+    li {
+        display: flex;
+        align-items: center;
+        max-height: 50px;
+        padding-left: 1vw;
+        flex-shrink: 0;
+    }
+    /* insert '|' spaced in between nav items */
+    li:not(:last-of-type):after {
+        padding-left: 1vw;
+        content: "|";
+        font-weight: 400;
+        color: white;
+    }
+    li:last-of-type {
+        padding-right: 1vw;
+    }
+    a {
+        font-family: Montserrat;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+    }
+</style>

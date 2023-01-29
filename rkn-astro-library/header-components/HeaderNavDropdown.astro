@@ -1,0 +1,75 @@
+---
+---
+
+<li class="headerNavDropdownWrapper">
+    <button type="button" class="headerNavDropdownButton">item</button>
+    <ul class="headerNavDropdownList hidden">
+        <li class="headerNavDropdownItem"><a>item 1</a></li>
+        <li class="headerNavDropdownItem"><a>item 2</a></li>
+        <li class="headerNavDropdownItem"><a>item 3</a></li>
+    </ul>
+</li>
+
+<style>
+    a,
+    button {
+        font-family: Montserrat;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: white;
+    }
+    button {
+        padding: 0px 1vw 0px 1vw;
+        flex-basis: 50px;
+    }
+    li {
+        display: flex;
+        align-items: center;
+        flex-basis: 50px;
+        flex-shrink: 0;
+        flex-grow: 1;
+    }
+    li.headerNavDropdownWrapper {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+    }
+    ul.headerNavDropdownList {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--primary-color);
+        padding: 0px 1vw 0px 1vw;
+        position: relative;
+        top: clamp(10px, -25px + (var(--header-height) / 2), 25px);
+        transition: 0.25s;
+    }
+    ul.hidden {
+        display: none;
+    }
+    /*DROPDOWN ITEM STYLES*/
+    li.headerNavDropdownItem {
+        flex-basis: 40px;
+    }
+    /*Removing default button styling*/
+    button {
+        display: inline-block;
+        border: none;
+        text-decoration: none;
+        font-size: 1.4rem;
+        cursor: pointer;
+        text-align: center;
+        background-color: var(--primary-color);
+    }
+</style>
+<script>
+    const headerNavButton = document.querySelector(".headerNavDropdownButton");
+    console.log(headerNavButton);
+    const headerNavDropdownList = document.querySelector(
+        ".headerNavDropdownList"
+    );
+    console.log(headerNavDropdownList);
+    headerNavButton.addEventListener("click", () => {
+        headerNavDropdownList.classList.toggle("hidden");
+        console.log("did stuff");
+    });
+</script>
