@@ -2,7 +2,7 @@
 //aria-haspopup="true" aria-expanded="false" lets screen readers no if they click, a submenu will pop up.
 ---
 
-<nav>
+<nav class="headerNav">
     <ul>
         <slot />
     </ul>
@@ -26,7 +26,6 @@
         display: flex;
         font-size: 1.4rem;
         list-style: none;
-        align-items: center;
     }
     @media (max-width: 916px) {
         nav {
@@ -36,10 +35,15 @@
             background-color: var(--primary-color);
             padding-left: 0;
             flex-direction: column;
+            display: none;
+        }
+        nav.hidden {
+            display: flex;
         }
         ul {
             flex-direction: column;
             padding-bottom: 10px;
+            align-items: center;
         }
     }
 </style>

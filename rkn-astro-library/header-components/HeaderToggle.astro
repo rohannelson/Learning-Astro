@@ -1,13 +1,13 @@
 ---
 ---
 
-<button type="button" id="sidebar-toggle" class="hamburger">
+<button type="button" class="headerNavToggle hamburger">
     <div></div>
     <div></div>
     <div></div>
 </button>
 <style>
-    #sidebar-toggle {
+    .headerNavToggle {
         display: none;
         flex-direction: column;
         justify-content: center;
@@ -15,9 +15,10 @@
         background-color: var(--primary-color);
         border: 0px;
         transition: 0.25s;
+        cursor: pointer;
     }
 
-    #sidebar-toggle div {
+    .headerNavToggle div {
         background-color: #fff;
         height: 0.4em;
         transition: 0.4s;
@@ -25,7 +26,7 @@
         flex-grow: 0;
     }
 
-    #sidebar-toggle.hamburger div {
+    .headerNavToggle.hamburger div {
         width: 3.5em;
         margin: 0.3em 0.1em 0.3em 0;
         border-radius: 10px;
@@ -36,9 +37,17 @@
         width: auto;
     }
     @media (max-width: 916px) {
-        #sidebar-toggle {
+        .headerNavToggle {
             display: flex;
             margin-left: auto;
         }
     }
 </style>
+<script>
+    const headerNavToggle = document.querySelector(".headerNavToggle");
+    const headerNav = document.querySelector(".headerNav");
+    headerNavToggle.addEventListener("click", () => {
+        console.log("hamburger clicked");
+        headerNav.classList.toggle("hidden");
+    });
+</script>

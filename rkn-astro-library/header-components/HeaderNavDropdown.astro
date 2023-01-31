@@ -9,6 +9,7 @@ const { buttonName } = Astro.props;
         aria-haspopup="true"
         aria-expanded="false"
         >{buttonName}
+        <span>❯</span>
     </button>
     <ul class="hidden">
         <slot />
@@ -29,7 +30,7 @@ const { buttonName } = Astro.props;
         display: flex;
         flex-direction: column;
         background-color: var(--primary-color);
-        padding: 0px 20px 0px 20px;
+        padding: 0px 30px 0px 20px;
         position: relative;
         transition: 0.25s;
     }
@@ -52,6 +53,20 @@ const { buttonName } = Astro.props;
         text-transform: uppercase;
         font-weight: 700;
         color: white;
+    }
+    span {
+        color: white;
+        font-size: 10px;
+        display: inline-block;
+        transform: rotate(90deg);
+        position: relative;
+        bottom: 3px;
+        left: 3px;
+        transition: 0.25s;
+    }
+    span.toggled {
+        transform: rotate(-90deg);
+        transition: 0.25s;
     }
     @media (min-width: 917px) {
         li.headerNavDropdownWrapper:not(:last-of-type):after {
@@ -79,6 +94,9 @@ const { buttonName } = Astro.props;
         button {
             padding: 10px 0;
         }
+        ul {
+            padding-left: 50px;
+        }
     }
 </style>
 <script>
@@ -89,6 +107,9 @@ const { buttonName } = Astro.props;
         button.addEventListener("click", (event) => {
             // @ts-ignore
             event.target.nextElementSibling.classList.toggle("hidden");
+            // @ts-ignore
+            event.target.firstElementChild.classList.toggle("toggled");
+            console.log(event.target);
         });
     });
 </script>
