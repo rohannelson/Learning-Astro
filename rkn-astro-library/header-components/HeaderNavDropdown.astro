@@ -1,10 +1,13 @@
 ---
 const { buttonName } = Astro.props;
+const { buttonName } = Astro.props;
 ---
 
 <li class="headerNavDropdownWrapper">
     <button type="button" class="headerNavDropdownButton">{buttonName}</button>
+    <button type="button" class="headerNavDropdownButton">{buttonName}</button>
     <ul class="headerNavDropdownList hidden">
+        <slot />
         <slot />
     </ul>
 </li>
@@ -67,6 +70,8 @@ const { buttonName } = Astro.props;
     }
 </style>
 <script>
+    const headerNavButtons = document.querySelectorAll(
+        ".headerNavDropdownButton"
     const headerNavButtons = document.querySelectorAll(
         ".headerNavDropdownButton"
     );
