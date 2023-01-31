@@ -1,3 +1,6 @@
 export { default as HeaderWrapper } from './HeaderWrapper.astro'
 export { default as HeaderLogo } from './HeaderLogo.astro'
 export { default as HeaderNav } from './HeaderNav.astro'
+export { default as HeaderNavDropdown } from './HeaderNavDropdown.astro'
+export { default as HeaderNavDropdownItem } from './HeaderNavDropdownItem.astro'
+export { default as HeaderNavItem } from './HeaderNavItem.astro'

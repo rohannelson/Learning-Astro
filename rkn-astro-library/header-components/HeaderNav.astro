@@ -5,40 +5,15 @@
 //opacity: 0 as a way of hiding something
 //How to architect this? What about HeaderNavWrapper, HeaderNavItem, HeaderNavDropdown? This breaks the problem into discreet chunks.
 //area-haspopup="true" aria-expanded="false" lets screen readers no if they click, a submenu will pop up.
-import HeaderNavItem from "./HeaderNavItem.astro";
-import HeaderNavDropdown from "./HeaderNavDropdown.astro";
-import HeaderNavDropdownItem from "./HeaderNavDropdownItem.astro";
 ---
 
 <nav>
-    <ul class="headerNavMainList">
-        <HeaderNavItem itemhref="#" itemName="item 1" component />
-        <HeaderNavItem itemhref="#" itemName="item 2" component />
-        <HeaderNavItem itemhref="#" itemName="item 3" component />
-        <HeaderNavDropdown buttonName="Test Item">
-            <HeaderNavDropdownItem itemhref="#" itemName="test item" />
-            <HeaderNavDropdownItem itemhref="#" itemName="test item" />
-            <HeaderNavDropdownItem itemhref="#" itemName="test item" />
-        </HeaderNavDropdown>
-        <HeaderNavDropdown buttonName="Test Item">
-            <HeaderNavDropdownItem itemhref="#" itemName="test item" />
-            <HeaderNavDropdownItem itemhref="#" itemName="test item" />
-            <HeaderNavDropdownItem itemhref="#" itemName="test item" />
-        </HeaderNavDropdown>
+    <ul>
+        <slot />
     </ul>
 </nav>
 
 <style>
-    /*
-    <li class="headerNavDropdownWrapper">
-            <button type="button" class="headerNavDropdownButton">item</button>
-            <ul class="headerNavDropdownList hidden">
-                <li class="headerNavDropdownItem">item</li>
-                <li class="headerNavDropdownItem">item</li>
-                <li class="headerNavDropdownItem">item</li>
-            </ul>
-        </li>
-    /*
     /*Clamp value to manually centre Nav based on header height changes.
     Align-items makes the list items centred*/
     nav {
@@ -56,71 +31,4 @@ import HeaderNavDropdownItem from "./HeaderNavDropdownItem.astro";
         font-size: 1.4rem;
         list-style: none;
     }
-    /*li,
-    button {
-        font-family: Montserrat;
-        text-transform: uppercase;
-        font-weight: 700;
-        background-color: gray;
-        color: white;
-        flex-basis: 50px;
-    }
-    button {
-        padding: 0px 1vw 0px 1vw;
-    }
-    li {
-        display: flex;
-        align-items: center;
-    }
-
-    MAINLIST ITEM STYLES - '|' in between items
-    .headerNavMainList > li:not(:last-of-type):after {
-        padding-left: 1vw;
-        content: "|";
-        font-weight: 400;
-    }
-
-    /*SINGLEITEM STYLES*/
-    /*li.headerNavSingleItem {
-        padding-left: 1vw;
-    }
-    li.headerNavSingleItem:last-of-type {
-        padding-right: 1vw;
-    }
-
-    li.headerNavSingleItem {
-        max-height: 50px;
-    }
-    HEADERNAVDROPDOWN STYLES
-    li.headerNavDropdownWrapper {
-        display: flex;
-        flex-direction: column;
-        align-self: flex-start;
-    }
-    ul.headerNavDropdownList {
-        display: flex;
-        flex-direction: column;
-        background-color: var(--primary-color);
-        padding: 0px 1vw 0px 1vw;
-        position: relative;
-        top: clamp(10px, -25px + (var(--header-height) / 2), 25px);
-        transition: 0.25s;
-    }
-    ul.hidden {
-        display: none;
-    }
-    DROPDOWN ITEM STYLES
-    li.headerNavDropdownItem {
-        flex-basis: 40px;
-    }
-    /*Removing default button styling
-    button {
-        display: inline-block;
-        border: none;
-        text-decoration: none;
-        font-size: 1.4rem;
-        cursor: pointer;
-        text-align: center;
-        background-color: var(--primary-color);
-    }*/
 </style>

@@ -5,6 +5,9 @@ import { HeaderWrapper } from "@rkn/header-components";
 import { HeaderLogo } from "@rkn/header-components";
 import { HeaderNav } from "@rkn/header-components";
 import textLogo from "../images/AnchorageTextLogo.png";
+import { HeaderNavItem } from "@rkn/header-components";
+import { HeaderNavDropdown } from "@rkn/header-components";
+import { HeaderNavDropdownItem } from "@rkn/header-components";
 const { title } = Astro.props;
 ---
 
@@ -29,7 +32,21 @@ const { title } = Astro.props;
                 textLogo={textLogo}
                 logoAltText="Anchorage Collective Logo"
             />
-            <HeaderNav />
+            <HeaderNav>
+                <HeaderNavItem itemhref="#" itemName="item 1" component />
+                <HeaderNavItem itemhref="#" itemName="item 2" component />
+                <HeaderNavItem itemhref="#" itemName="item 3" component />
+                <HeaderNavDropdown buttonName="Test Item">
+                    <HeaderNavDropdownItem itemhref="#" itemName="test item" />
+                    <HeaderNavDropdownItem itemhref="#" itemName="test item" />
+                    <HeaderNavDropdownItem itemhref="#" itemName="test item" />
+                </HeaderNavDropdown>
+                <HeaderNavDropdown buttonName="Test Item">
+                    <HeaderNavDropdownItem itemhref="#" itemName="test item" />
+                    <HeaderNavDropdownItem itemhref="#" itemName="test item" />
+                    <HeaderNavDropdownItem itemhref="#" itemName="test item" />
+                </HeaderNavDropdown>
+            </HeaderNav>
         </HeaderWrapper>
         <slot />
 

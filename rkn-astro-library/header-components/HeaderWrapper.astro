@@ -45,11 +45,9 @@
         entries.forEach((entry) => {
             if (!entry.isIntersecting) {
                 html.style.setProperty("--header-height", "7rem");
-                console.log("not intersecting");
                 headerWrapper.classList.add("scrolled");
             } else {
                 html.style.setProperty("--header-height", headerHeightInit);
-                console.log("intersecting");
                 headerWrapper.classList.remove("scrolled");
             }
         });
