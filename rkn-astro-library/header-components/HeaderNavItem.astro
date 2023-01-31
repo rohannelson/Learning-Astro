@@ -12,21 +12,28 @@ const { itemhref, itemName } = Astro.props;
         padding-left: 20px;
         flex-shrink: 0;
     }
-    /* insert '|' spaced in between nav items */
-    li:not(:last-of-type):after {
-        padding-left: 20px;
-        content: "|";
-        font-weight: 400;
-        color: white;
-    }
-    li:last-of-type {
-        padding-right: 20px;
-    }
     a {
         font-family: Montserrat;
         text-transform: uppercase;
         font-weight: 700;
         color: white;
         text-decoration: none;
+    }
+    @media (min-width: 917px) {
+        /* insert '|' spaced in between nav items */
+        li:not(:last-of-type):after {
+            padding-left: 20px;
+            content: "|";
+            font-weight: 400;
+            color: white;
+        }
+        li:last-of-type {
+            padding-right: 20px;
+        }
+    }
+    @media (max-width: 916px) {
+        li {
+            padding: 10px 0;
+        }
     }
 </style>

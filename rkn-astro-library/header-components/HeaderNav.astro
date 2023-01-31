@@ -26,5 +26,20 @@
         display: flex;
         font-size: 1.4rem;
         list-style: none;
+        align-items: center;
+    }
+    @media (max-width: 916px) {
+        nav {
+            position: absolute;
+            top: var(--header-height);
+            width: 100%;
+            background-color: var(--primary-color);
+            padding-left: 0;
+            flex-direction: column;
+        }
+        ul {
+            flex-direction: column;
+            padding-bottom: 10px;
+        }
     }
 </style>
