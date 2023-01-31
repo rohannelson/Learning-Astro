@@ -5,18 +5,21 @@
 //opacity: 0 as a way of hiding something
 //How to architect this? What about HeaderNavWrapper, HeaderNavItem, HeaderNavDropdown? This breaks the problem into discreet chunks.
 //area-haspopup="true" aria-expanded="false" lets screen readers no if they click, a submenu will pop up.
-import HeaderNavSingleItem from "./HeaderNavSingleItem.astro";
+import HeaderNavItem from "./HeaderNavItem.astro";
 import HeaderNavDropdown from "./HeaderNavDropdown.astro";
+import HeaderNavDropdownItem from "./HeaderNavDropdownItem.astro";
 ---
 
 <nav>
     <ul class="headerNavMainList">
-        <HeaderNavSingleItem itemhref="#" itemName="item 1" component />
-        <HeaderNavSingleItem itemhref="#" itemName="item 2" component />
-        <HeaderNavSingleItem itemhref="#" itemName="item 3" component />
-        <HeaderNavDropdown />
-        <HeaderNavDropdown />
-        <HeaderNavDropdown />
+        <HeaderNavItem itemhref="#" itemName="item 1" component />
+        <HeaderNavItem itemhref="#" itemName="item 2" component />
+        <HeaderNavItem itemhref="#" itemName="item 3" component />
+        <HeaderNavDropdown buttonName="Test Item">
+            <HeaderNavDropdownItem itemhref="#" itemName="test item" />
+            <HeaderNavDropdownItem itemhref="#" itemName="test item" />
+            <HeaderNavDropdownItem itemhref="#" itemName="test item" />
+        </HeaderNavDropdown>
     </ul>
 </nav>
 
@@ -116,12 +119,3 @@ import HeaderNavDropdown from "./HeaderNavDropdown.astro";
         background-color: var(--primary-color);
     }*/
 </style>
-<script>
-    /*const headerNavButton = document.querySelector(".headerNavDropdownButton");
-    const headerNavDropdownList = document.querySelector(
-        ".headerNavDropdownList"
-    );
-    headerNavButton.addEventListener("click", () => {
-        headerNavDropdownList.classList.toggle("hidden");
-    });*/
-</script>
