@@ -8,6 +8,7 @@ import textLogo from "../images/AnchorageTextLogo.png";
 import { HeaderNavItem } from "@rkn/header-components";
 import { HeaderNavDropdown } from "@rkn/header-components";
 import { HeaderNavDropdownItem } from "@rkn/header-components";
+import { HeaderHamburger } from "@rkn/header-components";
 const { title } = Astro.props;
 ---
 
@@ -47,6 +48,7 @@ const { title } = Astro.props;
                     <HeaderNavDropdownItem itemhref="#" itemName="test item" />
                 </HeaderNavDropdown>
             </HeaderNav>
+            <HeaderHamburger />
         </HeaderWrapper>
         <slot />
 

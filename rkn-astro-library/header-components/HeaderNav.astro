@@ -1,10 +1,5 @@
 ---
-//Can use checkbox with label for toggleable menu
-//Can also use button
-//Go with position: relative? They're also using position absolute a lot...
-//opacity: 0 as a way of hiding something
-//How to architect this? What about HeaderNavWrapper, HeaderNavItem, HeaderNavDropdown? This breaks the problem into discreet chunks.
-//area-haspopup="true" aria-expanded="false" lets screen readers no if they click, a submenu will pop up.
+//aria-haspopup="true" aria-expanded="false" lets screen readers no if they click, a submenu will pop up.
 ---
 
 <nav>
@@ -18,6 +13,7 @@
     Align-items makes the list items centred*/
     nav {
         margin: 0px auto 0px auto;
+        padding-left: 9vw;
         display: flex;
         align-items: center;
         transition: 0.25s;
