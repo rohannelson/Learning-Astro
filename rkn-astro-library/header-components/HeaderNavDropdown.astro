@@ -1,12 +1,11 @@
 ---
+const { buttonName } = Astro.props;
 ---
 
 <li class="headerNavDropdownWrapper">
-    <button type="button" class="headerNavDropdownButton">item</button>
+    <button type="button" class="headerNavDropdownButton">{buttonName}</button>
     <ul class="headerNavDropdownList hidden">
-        <li class="headerNavDropdownItem"><a>item 1</a></li>
-        <li class="headerNavDropdownItem"><a>item 2</a></li>
-        <li class="headerNavDropdownItem"><a>item 3</a></li>
+        <slot />
     </ul>
 </li>
 
@@ -56,10 +55,6 @@
     ul.hidden {
         display: none;
     }
-    /*DROPDOWN ITEM STYLES*/
-    li.headerNavDropdownItem {
-        flex-basis: 40px;
-    }
     /*Removing default button styling*/
     button {
         display: inline-block;
@@ -72,14 +67,13 @@
     }
 </style>
 <script>
-    const headerNavButton = document.querySelector(".headerNavDropdownButton");
-    console.log(headerNavButton);
-    const headerNavDropdownList = document.querySelector(
-        ".headerNavDropdownList"
+    const headerNavButtons = document.querySelectorAll(
+        ".headerNavDropdownButton"
     );
-    console.log(headerNavDropdownList);
-    headerNavButton.addEventListener("click", () => {
-        headerNavDropdownList.classList.toggle("hidden");
-        console.log("did stuff");
+    headerNavButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+            // @ts-ignore
+            event.target.nextElementSibling.classList.toggle("hidden");
+        });
     });
 </script>
