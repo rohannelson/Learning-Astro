@@ -1,6 +1,6 @@
 :root {
     font-size: 10px;
-    --primary-color: #51534a;
+    --gunmetal: #51534a;
 }
 
 * {
@@ -28,5 +28,5 @@ header button {
     font-size: 1.4rem;
     cursor: pointer;
     text-align: center;
-    background-color: var(--primary-color);
+    background-color: var(--gunmetal);
 }
