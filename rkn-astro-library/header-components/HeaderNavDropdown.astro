@@ -3,7 +3,11 @@ const { buttonName } = Astro.props;
 ---
 
 <li class="headerNavDropdownWrapper">
-    <button type="button" class="headerNavDropdownButton" aria-haspopup="true"
+    <button
+        type="button"
+        class="headerNavDropdownButton"
+        aria-haspopup="true"
+        aria-expanded="false"
         >{buttonName}
         <span>❯</span>
     </button>
@@ -89,6 +93,13 @@ const { buttonName } = Astro.props;
         event.target.nextElementSibling.classList.toggle("show");
         // @ts-ignore
         event.target.firstElementChild.classList.toggle("toggled");
+        console.log(event.target);
+        let expanded = event.target.getAttribute("aria-expanded");
+        if (expanded === "true") {
+            event.target.setAttribute("aria-expanded", "false");
+        } else {
+            event.target.setAttribute("aria-expanded", "true");
+        }
     };
     headerNavButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
