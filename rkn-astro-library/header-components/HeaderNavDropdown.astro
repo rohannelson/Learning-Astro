@@ -3,15 +3,11 @@ const { buttonName } = Astro.props;
 ---
 
 <li class="headerNavDropdownWrapper">
-    <button
-        type="button"
-        class="headerNavDropdownButton"
-        aria-haspopup="true"
-        aria-expanded="false"
+    <button type="button" class="headerNavDropdownButton" aria-haspopup="true"
         >{buttonName}
         <span>❯</span>
     </button>
-    <ul class="hidden">
+    <ul>
         <slot />
     </ul>
 </li>
@@ -27,15 +23,15 @@ const { buttonName } = Astro.props;
         position: relative;
     }
     ul {
-        display: flex;
         flex-direction: column;
         background-color: var(--gunmetal);
         padding: 0px 30px 0px 20px;
         position: relative;
         transition: 0.25s;
-    }
-    ul.hidden {
         display: none;
+    }
+    ul.show {
+        display: flex;
     }
     /*Button Styling*/
     span {
@@ -88,13 +84,27 @@ const { buttonName } = Astro.props;
     const headerNavButtons = document.querySelectorAll(
         ".headerNavDropdownButton"
     );
+    const toggleDropdown = (event) => {
+        // @ts-ignore
+        event.target.nextElementSibling.classList.toggle("show");
+        // @ts-ignore
+        event.target.firstElementChild.classList.toggle("toggled");
+    };
     headerNavButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
             // @ts-ignore
-            event.target.nextElementSibling.classList.toggle("hidden");
-            // @ts-ignore
-            event.target.firstElementChild.classList.toggle("toggled");
-            console.log(event.target);
+            if (event.target.nextElementSibling.classList.contains("show")) {
+                toggleDropdown(event);
+            } else {
+                let showing = document.querySelector("ul.show");
+                if (showing) {
+                    showing.classList.remove("show");
+                    showing.previousElementSibling.firstElementChild.classList.remove(
+                        "toggled"
+                    );
+                }
+                toggleDropdown(event);
+            }
         });
     });
 </script>
