@@ -90,21 +90,24 @@ const { buttonName } = Astro.props;
     );
     const toggleDropdown = (event) => {
         // @ts-ignore
-        event.target.nextElementSibling.classList.toggle("show");
+        event.currentTarget.nextElementSibling.classList.toggle("show");
         // @ts-ignore
-        event.target.firstElementChild.classList.toggle("toggled");
-        console.log(event.target);
-        let expanded = event.target.getAttribute("aria-expanded");
+        event.currentTarget.firstElementChild.classList.toggle("toggled");
+        let expanded = event.currentTarget.getAttribute("aria-expanded");
         if (expanded === "true") {
-            event.target.setAttribute("aria-expanded", "false");
+            event.currentTarget.setAttribute("aria-expanded", "false");
         } else {
-            event.target.setAttribute("aria-expanded", "true");
+            event.currentTarget.setAttribute("aria-expanded", "true");
         }
     };
     headerNavButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
-            // @ts-ignore
-            if (event.target.nextElementSibling.classList.contains("show")) {
+            if (
+                // @ts-ignore
+                event.currentTarget.nextElementSibling.classList.contains(
+                    "show"
+                )
+            ) {
                 toggleDropdown(event);
             } else {
                 let showing = document.querySelector("ul.show");
