@@ -14,4 +14,11 @@ const { textLogo, logoAltText } = Astro.props;
         position: fixed;
         top: 0;
     }
+    @media (max-width: 916px) {
+        img {
+            height: var(--header-height);
+            padding: 0.5rem 0;
+            padding-left: 1vw;
+        }
+    }
 </style>
