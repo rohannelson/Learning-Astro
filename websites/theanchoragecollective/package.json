@@ -11,8 +11,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.11.5",
+    "@astrojs/mdx": "^0.16.0",
+    "@rkn/page-components": "file:../../rkn-astro-library/page-components",
     "@rkn/shared-components": "file:../../shared-components/",
-    "astro": "^1.9.0"
+    "astro": "^2.0.6"
   }
 }

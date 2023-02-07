@@ -1,0 +1,15 @@
+---
+const { BackgroundImage } = Astro.props;
+---
+
+<section title="Hero Image">
+    <img src={BackgroundImage} />
+</section>
+
+<style>
+    section,
+    img {
+        height: auto;
+        width: 100%;
+    }
+</style>
