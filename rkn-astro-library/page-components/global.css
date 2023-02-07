@@ -3,21 +3,23 @@
     --gunmetal: #51534a;
     /*A tint of the gunmetal*/
     --gunmetal-tint: #d9dbd0;
+    scroll-padding-top: calc(var(--header-height)*0.6);
 }
 
 * {
+    box-sizing: border-box;
+    color: white;
     margin: 0px;
     padding: 0px;
-    box-sizing: border-box;
 }
 
 /*HEADER STYLES*/
 header a,
+footer a,
 header button {
     font-family: Montserrat;
     text-transform: uppercase;
     font-weight: 700;
-    color: white;
     text-decoration: none;
     white-space: nowrap;
     transition: 0.25s;
@@ -25,14 +27,16 @@ header button {
 }
 
 header a:hover,
-header button:hover {
+header button:hover,
+footer a:hover {
     color: var(--gunmetal-tint);
     transform: scale(1.05);
 }
 
 header a:focus,
 header button:focus,
-header input:focus {
+header input:focus,
+header a:focus {
     color: var(--gunmetal-tint);
     transform: scale(1.08);
     outline: none;
@@ -53,3 +57,39 @@ header button {
     text-align: center;
     background-color: var(--gunmetal);
 }
+
+/*Font Stles*/
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    padding-top: 1em;
+}
+
+h1 {
+    font-size: 3.6rem;
+}
+
+h2 {
+    font-size: 2.6rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.8rem;
+}
+
+h5 {
+    font-size: 1.8rem;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+a {}

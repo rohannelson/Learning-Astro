@@ -1,6 +1,6 @@
 ---
 import "../styles/normalize.css";
-import "../../../../shared-components/components/global.css";
+import "../../../../rkn-astro-library/page-components/global.css";
 import { HeaderWrapper } from "@rkn/header-components";
 import { HeaderLogo } from "@rkn/header-components";
 import { HeaderNav } from "@rkn/header-components";
@@ -9,6 +9,7 @@ import { HeaderNavItem } from "@rkn/header-components";
 import { HeaderNavDropdown } from "@rkn/header-components";
 import { HeaderNavDropdownItem } from "@rkn/header-components";
 import { HeaderToggle } from "@rkn/header-components";
+import { FooterWrapper } from "@rkn/footer-components";
 const { title } = Astro.props;
 ---
 
@@ -34,23 +35,23 @@ const { title } = Astro.props;
                 logoAltText="Anchorage Collective Logo"
             />
             <HeaderNav>
-                <HeaderNavItem itemhref="#" itemName="item 1" component />
-                <HeaderNavItem itemhref="#" itemName="item 2" component />
-                <HeaderNavItem itemhref="#" itemName="item 3" component />
-                <HeaderNavDropdown buttonName="Test Item 1">
-                    <HeaderNavDropdownItem itemhref="#" itemName="test item" />
-                    <HeaderNavDropdownItem itemhref="#" itemName="test item" />
-                    <HeaderNavDropdownItem itemhref="#" itemName="test item" />
+                <HeaderNavItem itemhref="#" itemName="Find Me A..." />
+                <HeaderNavDropdown buttonName="About The Anchorage">
+                    <HeaderNavDropdownItem itemhref="#" itemName="Who We Are" />
+                    <HeaderNavDropdownItem
+                        itemhref="#"
+                        itemName="The Collective"
+                    />
                 </HeaderNavDropdown>
-                <HeaderNavDropdown buttonName="Test Item 2">
-                    <HeaderNavDropdownItem itemhref="#" itemName="test item" />
-                    <HeaderNavDropdownItem itemhref="#" itemName="test item" />
-                    <HeaderNavDropdownItem itemhref="#" itemName="test item" />
-                </HeaderNavDropdown>
+                <HeaderNavItem itemhref="#" itemName="Moorings" />
+                <HeaderNavItem itemhref="#" itemName="Contact" />
             </HeaderNav>
             <HeaderToggle />
         </HeaderWrapper>
-        <slot />
+        <main>
+            <slot />
+        </main>
+        <FooterWrapper />
 
         <style is:global>
             :root {

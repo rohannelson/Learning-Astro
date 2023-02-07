@@ -1,69 +1,43 @@
 ---
 import AnchorageBaseLayout from "../layouts/AnchorageBaseLayout.astro";
 import { HeroImage } from "@rkn/page-components";
+import { SingleColumnBlock } from "@rkn/page-components";
 ---
 
-<AnchorageBaseLayout />
-<main style="font-size: 16px;">
-	<HeroImage backgroundImage="url(images/HeaderImage.jpg)" />
-	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-		doloremque! Eligendi sapiente non nemo ullam molestiae voluptatum ex
-		perspiciatis magnam explicabo nulla, corporis, libero recusandae
-		voluptatem modi autem? Repudiandae, quae.
-	</p>
-	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-		doloremque! Eligendi sapiente non nemo ullam molestiae voluptatum ex
-		perspiciatis magnam explicabo nulla, corporis, libero recusandae
-		voluptatem modi autem? Repudiandae, quae.
-	</p>
-	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-		doloremque! Eligendi sapiente non nemo ullam molestiae voluptatum ex
-		perspiciatis magnam explicabo nulla, corporis, libero recusandae
-		voluptatem modi autem? Repudiandae, quae.
-	</p>
-	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-		doloremque! Eligendi sapiente non nemo ullam molestiae voluptatum ex
-		perspiciatis magnam explicabo nulla, corporis, libero recusandae
-		voluptatem modi autem? Repudiandae, quae.
-	</p>
-	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-		doloremque! Eligendi sapiente non nemo ullam molestiae voluptatum ex
-		perspiciatis magnam explicabo nulla, corporis, libero recusandae
-		voluptatem modi autem? Repudiandae, quae.
-	</p>
-	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-		doloremque! Eligendi sapiente non nemo ullam molestiae voluptatum ex
-		perspiciatis magnam explicabo nulla, corporis, libero recusandae
-		voluptatem modi autem? Repudiandae, quae.
-	</p>
-	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-		doloremque! Eligendi sapiente non nemo ullam molestiae voluptatum ex
-		perspiciatis magnam explicabo nulla, corporis, libero recusandae
-		voluptatem modi autem? Repudiandae, quae.
-	</p>
-	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-		doloremque! Eligendi sapiente non nemo ullam molestiae voluptatum ex
-		perspiciatis magnam explicabo nulla, corporis, libero recusandae
-		voluptatem modi autem? Repudiandae, quae.
-	</p>
-	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-		doloremque! Eligendi sapiente non nemo ullam molestiae voluptatum ex
-		perspiciatis magnam explicabo nulla, corporis, libero recusandae
-		voluptatem modi autem? Repudiandae, quae.
-	</p>
-	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores,
-		doloremque! Eligendi sapiente non nemo ullam molestiae voluptatum ex
-		perspiciatis magnam explicabo nulla, corporis, libero recusandae
-		voluptatem modi autem? Repudiandae, quae.
-	</p>
-</main>
+<AnchorageBaseLayout>
+	<HeroImage BackgroundImage="images/HeaderImage.jpg">
+		<h2 class="hero">
+			A place of formation<br />
+			Shape your ministry
+		</h2>
+	</HeroImage>
+	<SingleColumnBlock>
+		<h2>A heading</h2>
+		<h3>A subheading</h3>
+		<p>
+			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero et
+			minima nisi veritatis, necessitatibus in inventore unde atque a.
+			Accusamus perferendis amet facere suscipit illum ipsum, possimus ab
+			aliquid rerum?
+		</p>
+	</SingleColumnBlock>
+</AnchorageBaseLayout>
+<style>
+	h2 {
+		color: white;
+		text-shadow: 0 0 8px black;
+		z-index: 1;
+		transition: 0.25s;
+		font-size: 36px;
+		text-align: center;
+	}
+	h2.hero {
+		margin-top: max(40vh, calc(var(--header-height) + 60px));
+		padding: 0;
+	}
+	@media (max-width: 640px) {
+		h2 {
+			font-size: 26px;
+		}
+	}
+</style>
