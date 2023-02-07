@@ -1,29 +1,47 @@
 ---
-const { BackgroundImage } = Astro.props;
-const BackgroundImageMed = BackgroundImage.split(".").join("-915w.") + " 915w";
-const BackgroundImageLge = BackgroundImage + " 1920w";
+const { backgroundImage } = Astro.props;
+//const BackgroundImageMed = backgroundImage.split(".").join("Med.");
+
+/*This is how I did this at first, keeping as it might be useful for later reference:
+<picture>
+    <source
+        srcset={BackgroundImageMed}
+        type="image/jpeg"
+        media="(max-width:915px)"
+    />
+    <source
+        srcset={BackgroundImageLge}
+        type="image/jpeg"
+        media="(min-width:916px)"
+    />
+    <img src={BackgroundImage} />
+</picture>*/
 ---
 
 <section title="Hero Image">
-    <picture>
-        <source
-            srcset={BackgroundImageMed}
-            type="image/jpeg"
-            media="(max-width:915px)"
-        />
-        <source
-            srcset={BackgroundImageLge}
-            type="image/jpeg"
-            media="(min-width:916px)"
-        />
-        <img src={BackgroundImage} />
-    </picture>
+    <h2>Hero Image Text</h2>
 </section>
 
-<style>
-    section,
-    img {
-        height: auto;
+<style define:vars={{ backgroundImage /*, BackgroundImageMed*/ }}>
+    section {
+        background-image: var(--backgroundImage);
+        background-position: center;
+        background-size: cover;
+        height: 100vh;
         width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+    h2 {
+        color: white;
+        text-shadow: 0 0 6px black;
+    }
+    /*
+   DOESN'T WORK AS YOU CAN'T IMPORT VARIABLES INTO MEDIA QUERIES... 
+   @media (max-width: 639px) {
+        section {
+            background-image: var(--backgroundImageMed);
+        }
+    }*/
 </style>
