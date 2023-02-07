@@ -1,9 +1,23 @@
 ---
 const { BackgroundImage } = Astro.props;
+const BackgroundImageMed = BackgroundImage.split(".").join("-915w.") + " 915w";
+const BackgroundImageLge = BackgroundImage + " 1920w";
 ---
 
 <section title="Hero Image">
-    <img src={BackgroundImage} />
+    <picture>
+        <source
+            srcset={BackgroundImageMed}
+            type="image/jpeg"
+            media="(max-width:915px)"
+        />
+        <source
+            srcset={BackgroundImageLge}
+            type="image/jpeg"
+            media="(min-width:916px)"
+        />
+        <img src={BackgroundImage} />
+    </picture>
 </section>
 
 <style>
