@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^0.16.0",
-    "@rkn/footer-components": "file:../../rkn-astro-library/footer-components",
+    "@rkn/base-components": "file:../../rkn-astro-library/base-components",
     "@rkn/page-components": "file:../../rkn-astro-library/page-components",
     "@rkn/shared-components": "file:../../shared-components/",
     "astro": "^2.0.6"

@@ -8,5 +8,8 @@
     "rkn-astro-library/*",
     "websites/*"
   ],
-  "scripts": {}
+  "scripts": {},
+  "dependencies": {
+    "@rkn/base-components": "^1.0.0"
+  }
 }

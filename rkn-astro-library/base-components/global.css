@@ -1,8 +1,8 @@
 :root {
     font-size: 10px;
-    --gunmetal: #51534a;
-    /*A tint of the gunmetal*/
-    --gunmetal-tint: #d9dbd0;
+    --banner-color: #51534a;
+    /*A tint of the banner-color*/
+    --banner-color-tint: #d9dbd0;
     scroll-padding-top: calc(var(--header-height)*0.6);
 }
 
@@ -23,13 +23,13 @@ header button {
     text-decoration: none;
     white-space: nowrap;
     transition: 0.25s;
-    background-color: var(--gunmetal);
+    background-color: var(--banner-color);
 }
 
 header a:hover,
 header button:hover,
 footer a:hover {
-    color: var(--gunmetal-tint);
+    color: var(--banner-color-tint);
     transform: scale(1.05);
 }
 
@@ -37,7 +37,7 @@ header a:focus,
 header button:focus,
 header input:focus,
 header a:focus {
-    color: var(--gunmetal-tint);
+    color: var(--banner-color-tint);
     transform: scale(1.08);
     outline: none;
     border: 0;
@@ -55,7 +55,7 @@ header button {
     font-size: 1.4rem;
     cursor: pointer;
     text-align: center;
-    background-color: var(--gunmetal);
+    background-color: var(--banner-color);
 }
 
 /*Font Stles*/
@@ -91,5 +91,3 @@ h5 {
 p {
     font-size: 1.6rem;
 }
-
-a {}
