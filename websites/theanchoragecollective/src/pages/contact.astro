@@ -1,0 +1,47 @@
+---
+import AnchorageBaseLayout from "../layouts/AnchorageBaseLayout.astro";
+---
+
+<AnchorageBaseLayout>
+    <div class="padding-top">&nbsp;</div>
+    <div class="container-outer">
+        <div class="container-inner">
+            <div>
+                <h2>Finding Us</h2>
+                <img src="/images/location.png" />
+            </div>
+            <div>
+                <img src="/images/ColourLogo.png" />
+            </div>
+        </div>
+    </div>
+</AnchorageBaseLayout>
+<style>
+    div.padding-top {
+        height: var(--header-height);
+        transition: 0.25s;
+    }
+    div.container-outer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 2vw 5vw 3vw 5vw;
+    }
+    div.container-inner {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        justify-items: center;
+        align-items: center;
+    }
+    img {
+        max-width: 100%;
+        max-height: 100vh;
+    }
+    h2 {
+        color: #51534a;
+        text-align: center;
+        padding-bottom: 2rem;
+    }
+</style>

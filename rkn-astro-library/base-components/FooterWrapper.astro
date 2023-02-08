@@ -1,20 +1,17 @@
 ---
-import FacebookIcon from "./FacebookIcon.astro";
-import InstagramIcon from "./InstagramIcon.astro";
-import FooterNavItem from "./FooterNavItem.astro";
 ---
 
 <hr />
 <footer>
     <nav>
+        <slot />
         <ul class="links">
-            <FooterNavItem itemhref="#" itemName="Find Me A..." />
-            <FooterNavItem itemhref="#" itemName="Contact" />
+            <slot name="links" />
         </ul>
         <ul class="socials">
-            <li><a href="#"><FacebookIcon /></a></li>
-            <li><a href="#"><InstagramIcon /></a></li>
+            <slot name="socials" />
         </ul>
+        <p>© 2021 The Anchorage</p>
     </nav>
 </footer>
 <style>
@@ -28,26 +25,23 @@ import FooterNavItem from "./FooterNavItem.astro";
         font-size: 14px;
         padding: 2rem;
     }
-    ul {
+    footer ul {
         list-style: none;
         display: flex;
         padding: 1rem 0;
         justify-content: center;
     }
-    li {
-        padding: 0 1rem;
-    }
-    footer a {
-        color: var(--banner-color-tint);
-        text-transform: none;
-        height: 100%;
-        display: inline-block;
-    }
-    footer a:hover {
-        color: white;
-    }
     hr {
         border: solid #fff 1px;
         width: 100%;
+        border-left: 0;
+        border-right: 0;
+    }
+    p {
+        text-align: center;
+        font-family: Montserrat;
+        color: var(--banner-color-tint);
+        font-size: 12px;
+        padding-top: 0;
     }
 </style>

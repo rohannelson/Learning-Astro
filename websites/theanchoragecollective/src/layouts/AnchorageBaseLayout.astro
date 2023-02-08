@@ -10,6 +10,9 @@ import { HeaderNavDropdown } from "@rkn/base-components";
 import { HeaderNavDropdownItem } from "@rkn/base-components";
 import { HeaderToggle } from "@rkn/base-components";
 import { FooterWrapper } from "@rkn/base-components";
+import { FooterNavItem } from "@rkn/base-components";
+import { IconInstagram } from "@rkn/base-components";
+import { IconFacebook } from "@rkn/base-components";
 const { title } = Astro.props;
 ---
 
@@ -44,15 +47,26 @@ const { title } = Astro.props;
                     />
                 </HeaderNavDropdown>
                 <HeaderNavItem itemhref="#" itemName="Moorings" />
-                <HeaderNavItem itemhref="#" itemName="Contact" />
+                <HeaderNavItem itemhref="contact" itemName="Contact" />
             </HeaderNav>
             <HeaderToggle />
         </HeaderWrapper>
         <main>
-            <slot />
+            <slot>
+                <div class="placeholder">
+                    <p>
+                        Here is some placeholder content. It will disappear when
+                        you put your own content in :)
+                    </p>
+                </div>
+            </slot>
         </main>
-        <FooterWrapper />
-
+        <FooterWrapper>
+            <FooterNavItem itemhref="#" itemName="Find Me A..." slot="links" />
+            <FooterNavItem itemhref="contact" itemName="Contact" slot="links" />
+            <IconFacebook iconhref="#" slot="socials" />
+            <IconInstagram iconhref="#" slot="socials" />
+        </FooterWrapper>
         <style is:global>
             :root {
                 font-family: "Source Sans Pro", sans-serif;
@@ -64,3 +78,8 @@ const { title } = Astro.props;
         </style>
     </body>
 </html>
+<style>
+    div.placeholder {
+        height: 80vh;
+    }
+</style>
