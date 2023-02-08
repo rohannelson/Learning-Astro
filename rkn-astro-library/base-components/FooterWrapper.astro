@@ -1,16 +1,19 @@
 ---
+import FacebookIcon from "./FacebookIcon.astro";
+import InstagramIcon from "./InstagramIcon.astro";
+import FooterNavItem from "./FooterNavItem.astro";
 ---
 
 <hr />
 <footer>
     <nav>
         <ul class="links">
-            <li><a>Link 1</a></li>
-            <li><a>Link 2</a></li>
+            <FooterNavItem itemhref="#" itemName="Find Me A..." />
+            <FooterNavItem itemhref="#" itemName="Contact" />
         </ul>
         <ul class="socials">
-            <li>Facebook</li>
-            <li>Insta</li>
+            <li><a href="#"><FacebookIcon /></a></li>
+            <li><a href="#"><InstagramIcon /></a></li>
         </ul>
     </nav>
 </footer>
@@ -23,11 +26,13 @@
         background-color: var(--banner-color);
         min-height: 20vh;
         font-size: 14px;
+        padding: 2rem;
     }
     ul {
         list-style: none;
         display: flex;
         padding: 1rem 0;
+        justify-content: center;
     }
     li {
         padding: 0 1rem;
@@ -35,6 +40,8 @@
     footer a {
         color: var(--banner-color-tint);
         text-transform: none;
+        height: 100%;
+        display: inline-block;
     }
     footer a:hover {
         color: white;

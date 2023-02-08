@@ -15,7 +15,6 @@
 
 /*HEADER STYLES*/
 header a,
-footer a,
 header button {
     font-family: Montserrat;
     text-transform: uppercase;
@@ -27,8 +26,7 @@ header button {
 }
 
 header a:hover,
-header button:hover,
-footer a:hover {
+header button:hover {
     color: var(--banner-color-tint);
     transform: scale(1.05);
 }
@@ -90,4 +88,17 @@ h5 {
 
 p {
     font-size: 1.6rem;
+}
+
+/*ICON STYLES*/
+svg {
+    fill: white;
+    height: 4rem;
+    width: auto;
+    margin: 1rem;
+}
+
+svg:focus,
+svg:hover {
+    transform: scale(1.05);
 }

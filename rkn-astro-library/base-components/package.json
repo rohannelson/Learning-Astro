@@ -1,21 +1,21 @@
 {
-  "name": "@rkn/base-components",
-  "type": "module",
-  "version": "1.0.0",
-  "description": "header and footer components for astro websites",
-  "exports": {
-    ".": "./index.js"
-  },
-  "main": "index.js",
-  "scripts": {
-    "test": "echo 'hello world'"
-  },
-  "keywords": [
-    "components",
-    "header",
-    "footer",
-    "astro"
-  ],
-  "author": "Rohan Nelson",
-  "license": "ISC"
+    "name": "@rkn/base-components",
+    "type": "module",
+    "version": "1.0.0",
+    "description": "header and footer components for astro websites",
+    "exports": {
+        ".": "./index.js"
+    },
+    "main": "index.js",
+    "scripts": {
+        "test": "echo 'hello world'"
+    },
+    "keywords": [
+        "components",
+        "header",
+        "footer",
+        "astro"
+    ],
+    "author": "Rohan Nelson",
+    "license": "ISC"
 }
