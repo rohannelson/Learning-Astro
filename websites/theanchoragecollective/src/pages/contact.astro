@@ -1,14 +1,15 @@
 ---
 import AnchorageBaseLayout from "../layouts/AnchorageBaseLayout.astro";
+import { GoogleMaps } from "@rkn/page-components";
 ---
 
 <AnchorageBaseLayout>
     <div class="padding-top">&nbsp;</div>
     <div class="container-outer">
         <div class="container-inner">
-            <div>
+            <div class="grid-item">
                 <h2>Finding Us</h2>
-                <img src="/images/location.png" />
+                <GoogleMaps />
             </div>
             <div>
                 <img src="/images/ColourLogo.png" />
@@ -32,8 +33,13 @@ import AnchorageBaseLayout from "../layouts/AnchorageBaseLayout.astro";
         display: grid;
         width: 100%;
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-rows: auto;
         justify-items: center;
         align-items: center;
+    }
+    div.grid-item {
+        width: 100%;
+        height: 100%;
     }
     img {
         max-width: 100%;
