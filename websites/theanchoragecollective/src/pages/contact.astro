@@ -7,12 +7,44 @@ import { GoogleMaps } from "@rkn/page-components";
     <div class="padding-top">&nbsp;</div>
     <div class="container-outer">
         <div class="container-inner">
-            <div class="grid-item">
-                <h2>Finding Us</h2>
-                <GoogleMaps />
+            <div>
+                <div style="max-width: 60vw;">
+                    <h2>Anchoring</h2>
+                    <p>
+                        Unless otherwise noted, group and individual work are
+                        based at:
+                    </p>
+                    <h5>
+                        The Anchorage<br />
+                        68 Waverley Street<br />
+                        Dianella WA 6059<br />
+                        admin@anchorage.org.au<br />
+                        (08) 9275 3773
+                    </h5>
+                </div>
             </div>
             <div>
                 <img src="/images/ColourLogo.png" />
+            </div>
+            <div class="map-container">
+                <div>
+                    <h2>Finding Us</h2>
+                    <GoogleMaps />
+                </div>
+            </div>
+            <div class="form-container">
+                <h2>Contact Us</h2>
+                <form id="contact-form">
+                    <label for="your-name">Your Name</label>
+                    <input id="your-name" type="text" />
+                    <label for="your-email">Your Email</label>
+                    <input id="your-email" type="email" />
+                    <label for="subject">Subject</label>
+                    <input id="subject" type="text" />
+                    <label for="your-message">Your Message</label>
+                    <textarea id="your-message"></textarea>
+                    <input id="submit-form" type="submit" value="Submit Form" />
+                </form>
             </div>
         </div>
     </div>
@@ -27,27 +59,65 @@ import { GoogleMaps } from "@rkn/page-components";
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        padding: 2vw 5vw 3vw 5vw;
+        padding: 2vw 10vw 3vw 10vw;
     }
     div.container-inner {
         display: grid;
         width: 100%;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        grid-template-rows: auto;
+        grid-template-columns: repeat(2, 1fr);
         justify-items: center;
         align-items: center;
     }
-    div.grid-item {
+    @media (max-width: 915px) {
+        div.container-inner {
+            grid-template-columns: 1fr;
+        }
+    }
+    .container-inner div {
         width: 100%;
         height: 100%;
     }
+    .container-inner > div {
+        display: flex;
+        justify-content: center;
+    }
     img {
         max-width: 100%;
-        max-height: 100vh;
+        max-height: 100%;
     }
     h2 {
         color: #51534a;
-        text-align: center;
         padding-bottom: 2rem;
+    }
+    p,
+    h5 {
+        color: #51534a;
+    }
+    div.form-container {
+        padding: 0 8rem;
+        display: flex;
+        flex-direction: column;
+    }
+    label {
+        display: block;
+        color: #51534a;
+        font-weight: 500;
+        font-size: 18px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    input {
+        font-size: 16px;
+    }
+    textarea {
+        min-height: 150px;
+    }
+    [type="submit"] {
+        background-color: #51534a;
+        font-size: 18px;
+        width: min-content;
+        padding: 1rem;
     }
 </style>
