@@ -4,38 +4,67 @@ const { frontmatter } = Astro.props;
 ---
 
 <AnchorageBaseLayout>
-    <img src={frontmatter.image} />
+    <section class="profile">
+        <div class="profile_container_inner">
+            <img src={frontmatter.image} />
 
-    <h3>Education:</h3>
+            <h3>Education:</h3>
 
-    <p>{frontmatter.education}</p>
+            <p>{frontmatter.education}</p>
 
-    <h3>Memberships:</h3>
+            <h3>Memberships:</h3>
 
-    <p>{frontmatter.memberships}</p>
+            <p>{frontmatter.memberships}</p>
 
-    <h3>Services Offered:</h3>
+            <h3>Services Offered:</h3>
 
-    <p>{frontmatter.servicesOffered}</p>
+            <p>{frontmatter.servicesOffered}</p>
 
-    <h3>Experience areas:</h3>
+            <h3>Experience areas:</h3>
 
-    <p>{frontmatter.experienceAreas}</p>
+            <p>{frontmatter.experienceAreas}</p>
 
-    <h3>Specialty areas:</h3>
+            <h3>Specialty areas:</h3>
 
-    <p>{frontmatter.specialtyAreas}</p>
+            <p>{frontmatter.specialtyAreas}</p>
 
-    ---
-
-    <slot />
-
-    ---
+            <hr />
+            <section class="profile-content">
+                <slot />
+            </section>
+            <hr />
+        </div>
+    </section>
 </AnchorageBaseLayout>
 
 <style>
     h3,
     p {
         color: #51534a;
+    }
+    :global(.profile-content *) {
+        color: #51534a;
+    }
+    .profile {
+        max-width: 750px;
+        padding: 2rem 2vw;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 0 auto;
+        background-color: #ffffff;
+    }
+    img {
+        width: 100%;
+        height: auto;
+    }
+    main {
+        background-color: #f2f2f2;
+    }
+    hr {
+        margin-top: 2em;
+    }
+    hr:last-of-type {
+        margin-bottom: 2em;
     }
 </style>

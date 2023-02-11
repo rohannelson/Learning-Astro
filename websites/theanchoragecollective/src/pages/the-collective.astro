@@ -1,0 +1,69 @@
+---
+import AnchorageBaseLayout from "../layouts/AnchorageBaseLayout.astro";
+import { HeroImage } from "@rkn/page-components";
+const allProfiles = await Astro.glob("./profiles/*.mdx");
+const title = "Profiles";
+---
+
+<AnchorageBaseLayout title={title}>
+    <HeroImage BackgroundImage="images/HeaderImage.jpg">
+        <h2 class="hero">
+            THE ANCHORAGE IS A COLLECTIVE OF EXPERT PRACTITIONERS SEEKING TO
+            EQUIP OTHERS IN TRANSFORMING, GROWING, AND BRIDGIN THE GAP BETWEEN
+            ASPIRATION AND REALITY.
+        </h2>
+    </HeroImage>
+    <ul>
+        {
+            allProfiles.map((profile) => (
+                <li>
+                    <img src={profile.frontmatter.image} />
+                    <a href={profile.url}>{profile.frontmatter.name}</a>
+                </li>
+            ))
+        }
+    </ul>
+</AnchorageBaseLayout>
+
+<style>
+    ul {
+        padding: 4rem;
+    }
+    li,
+    a {
+        color: #51534a;
+        font-size: 16px;
+    }
+    li {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+    }
+    img {
+        max-width: 200px;
+        height: auto;
+    }
+    /*HERO TEXT STYLING*/
+    h2 {
+        color: white;
+        text-shadow: 0 0 8px black;
+        z-index: 1;
+        transition: 0.25s;
+        font-size: 36px;
+        text-align: center;
+        max-width: 80%;
+    }
+    h2.hero {
+        margin-top: max(40vh, calc(var(--header-height) + 60px));
+        padding: 0;
+    }
+    @media (max-width: 640px) {
+        h2 {
+            font-size: 23px;
+            max-width: 90%;
+        }
+        h2.hero {
+            margin-top: max(30vh, calc(var(--header-height) + 35px));
+        }
+    }
+</style>

@@ -1,0 +1,46 @@
+---
+import AnchorageBaseLayout from "../../layouts/AnchorageBaseLayout.astro";
+export async function getStaticPaths() {
+    const allRoles = await Astro.glob("../profiles/*.mdx");
+
+    return [
+        { params: { service: "supervisor" }, props: { roles: allRoles } },
+        { params: { service: "mentor" }, props: { roles: allRoles } },
+        {
+            params: { service: "spiritual director" },
+            props: { roles: allRoles },
+        },
+        { params: { service: "counsellor" }, props: { roles: allRoles } },
+        { params: { service: "trainer" }, props: { roles: allRoles } },
+        { params: { service: "mentor" }, props: { roles: allRoles } },
+    ];
+}
+
+const { service } = Astro.params;
+const { roles } = Astro.props;
+const filteredRoles = roles.filter((role) =>
+    role.frontmatter.services.includes(service)
+);
+---
+
+<AnchorageBaseLayout title={service}>
+    <p>Does this work? {service}</p>
+    <ul>
+        {
+            filteredRoles.map((role) => (
+                <li>
+                    <a href={role.url}>{role.frontmatter.name}</a>
+                </li>
+            ))
+        }
+    </ul>
+</AnchorageBaseLayout>
+
+<style>
+    p,
+    li,
+    a {
+        color: #51534a;
+        font-size: 16px;
+    }
+</style>

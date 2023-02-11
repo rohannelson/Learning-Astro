@@ -1,0 +1,29 @@
+---
+import AnchorageBaseLayout from "../../layouts/AnchorageBaseLayout.astro";
+const title = "Find Me A";
+const allRoles = await Astro.glob("../profiles/*.mdx");
+const roles = [
+    ...new Set(allRoles.map((role) => role.frontmatter.services).flat()),
+];
+---
+
+<AnchorageBaseLayout title={title}>
+    <p>Watup!</p>
+    <div>
+        {
+            roles.map((role) => (
+                <p>
+                    <a href={`/services/${role}`}>{role}</a>
+                </p>
+            ))
+        }
+    </div>
+</AnchorageBaseLayout>
+<style>
+    p,
+    li,
+    a {
+        color: #51534a;
+        font-size: 16px;
+    }
+</style>

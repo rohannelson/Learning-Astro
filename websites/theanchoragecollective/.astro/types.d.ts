@@ -66,11 +66,7 @@ declare module 'astro:content' {
 	};
 
 	const entryMap: {
-		"blogs": {
-},
-"profiles": {
-},
-
+		
 	};
 
 	type ContentConfig = typeof import("../src/content/config");
