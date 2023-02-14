@@ -101,6 +101,10 @@ p {
     font-size: 1.6rem;
 }
 
+a {
+    font-size: 1.6rem;
+}
+
 @media (max-width:640px) {
     :root {
         --header1-size: 2.6rem;
