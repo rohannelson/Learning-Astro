@@ -1,11 +1,19 @@
 ---
 import AnchorageBaseLayout from "./AnchorageBaseLayout.astro";
+import { IconEmail } from "@rkn/base-components";
 const { frontmatter } = Astro.props;
 ---
 
 <AnchorageBaseLayout>
     <section class="profile">
         <div class="profile_container_inner">
+            <div class="profile_banner">
+                <h1>{frontmatter.name}</h1>
+                <div class="profile_icon_container">
+                    <IconEmail iconemail={frontmatter.email} />
+                </div>
+            </div>
+
             <img src={frontmatter.image} />
 
             <h3>Education:</h3>
@@ -38,16 +46,29 @@ const { frontmatter } = Astro.props;
 </AnchorageBaseLayout>
 
 <style>
+    h1,
     h3,
     p {
         color: #51534a;
     }
     :global(.profile-content *) {
-        color: #51534a;
+        color: var(--gunmetal);
+    }
+    :global(.profile_icon_container svg) {
+        fill: var(--gunmetal);
+        height: var(--header1-size);
+    }
+    :global(.profile_icon_container) {
+        margin-left: auto;
+    }
+    div .profile_banner {
+        display: flex;
+        align-items: center;
+        width: 100%;
     }
     .profile {
         max-width: 750px;
-        padding: 2rem 2vw;
+        padding: 0 2vw 2rem 2vw;
         display: flex;
         align-items: center;
         flex-direction: column;

@@ -42,12 +42,12 @@ const { title } = Astro.props;
                 <HeaderNavDropdown buttonName="About The Anchorage">
                     <HeaderNavDropdownItem itemhref="#" itemName="Who We Are" />
                     <HeaderNavDropdownItem
-                        itemhref="the-collective"
+                        itemhref="/the-collective"
                         itemName="The Collective"
                     />
                 </HeaderNavDropdown>
                 <HeaderNavItem itemhref="#" itemName="Moorings" />
-                <HeaderNavItem itemhref="contact" itemName="Contact" />
+                <HeaderNavItem itemhref="/contact" itemName="Contact" />
             </HeaderNav>
             <HeaderToggle />
         </HeaderWrapper>
@@ -63,7 +63,11 @@ const { title } = Astro.props;
         </main>
         <FooterWrapper>
             <FooterNavItem itemhref="#" itemName="Find Me A..." slot="links" />
-            <FooterNavItem itemhref="contact" itemName="Contact" slot="links" />
+            <FooterNavItem
+                itemhref="/contact"
+                itemName="Contact"
+                slot="links"
+            />
             <IconFacebook iconhref="#" slot="socials" />
             <IconInstagram iconhref="#" slot="socials" />
         </FooterWrapper>
