@@ -1,18 +1,15 @@
 ---
 import AnchorageBaseLayout from "../layouts/AnchorageBaseLayout.astro";
-import { HeroImage } from "@rkn/page-components";
+import { HeroBanner } from "@rkn/page-components";
 const allProfiles = await Astro.glob("./profiles/*.mdx");
 const title = "Profiles";
 ---
 
 <AnchorageBaseLayout title={title}>
-    <HeroImage BackgroundImage="images/HeaderImage.jpg">
-        <h2 class="hero">
-            THE ANCHORAGE IS A COLLECTIVE OF EXPERT PRACTITIONERS SEEKING TO
-            EQUIP OTHERS IN TRANSFORMING, GROWING, AND BRIDGIN THE GAP BETWEEN
-            ASPIRATION AND REALITY.
-        </h2>
-    </HeroImage>
+    <HeroBanner
+        BackgroundImage="images/HeaderImage.jpg"
+        HeroText="A collective of expert practitioners seeking to equip others in transforming, growing, and bridging the gap between aspiration and reality."
+    />
     <ul>
         {
             allProfiles.map((profile) => (
@@ -53,17 +50,10 @@ const title = "Profiles";
         text-align: center;
         max-width: 80%;
     }
-    h2.hero {
-        margin-top: max(40vh, calc(var(--header-height) + 60px));
-        padding: 0;
-    }
     @media (max-width: 640px) {
         h2 {
             font-size: 23px;
             max-width: 90%;
-        }
-        h2.hero {
-            margin-top: max(30vh, calc(var(--header-height) + 35px));
         }
     }
 </style>

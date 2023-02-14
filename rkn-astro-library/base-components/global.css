@@ -8,12 +8,17 @@
 
 * {
     box-sizing: border-box;
-    color: white;
     margin: 0px;
     padding: 0px;
 }
 
 /*HEADER STYLES*/
+header a,
+header li,
+header button {
+    color: white;
+}
+
 header a,
 header button {
     font-family: Montserrat;
