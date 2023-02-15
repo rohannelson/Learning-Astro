@@ -18,6 +18,22 @@ const roles = [
                 </div>
             ))
         }*/
+
+/* SELECT MENU - how it was before - not best practice.
+<select name="dropdown">
+                    <option value="">Choose a role...</option>
+                    <option value="trainer">Trainer</option>
+                    <option value="supervisor">Supervisor</option>
+                    <option value="spiritual director"
+                        >Spiritual Director</option
+                    >
+                    <option value="mentor">Mentor</option>
+                    <option value="coach">Coach</option>
+                    <option value="counsellor">Counsellor</option>
+                    <option value="yup">More</option>
+                    <option value="yes">Options</option>
+                    <option value="indeed">To choose</option>
+                </select>*/
 ---
 
 <AnchorageBaseLayout title={title}>
@@ -26,7 +42,7 @@ const roles = [
         HeroText="FIND ME A..."
     >
         <div class="dropdown_wrapper_outer">
-            <div class="dropdown_wraper_inner">
+            <div class="dropdown_wrapper_inner">
                 <FindMeADropdown buttonName="Choose a service...">
                     <FindMeADropdownItem
                         itemhref="/find-me-a/trainer"
@@ -115,13 +131,16 @@ const roles = [
     </div>
     <style>
         div.dropdown_wrapper_outer {
-            z-index: 1;
+            /*z-index: 2;
             position: relative;
+            margin: 0 auto;
+            width: 60px;
+            height: var(--header2-size);
         }
         div.dropdown_wrapper_inner {
             position: absolute;
             top: 0px;
-            left: 0px;
+            z-index: 2;*/
         }
         p,
         li,
