@@ -6,6 +6,7 @@ import FindMeADropdown from "../components/FindMeADropdown.astro";
 import { BlockDoubleColumn } from "@rkn/page-components";
 import { SectionWrapper } from "@rkn/page-components";
 import { BlockPaddingWrapper } from "@rkn/page-components";
+import { HeroImageScroll } from "@rkn/page-components";
 ---
 
 <AnchorageBaseLayout>
@@ -67,7 +68,17 @@ import { BlockPaddingWrapper } from "@rkn/page-components";
 			</div>
 		</BlockSingleColumn>
 	</SectionWrapper>
-
+	<HeroImageScroll BackgroundImage="images/HeaderImage.jpg">
+		<BlockSingleColumn>
+			<h2 class="small">
+				An inspirational quote about The Anchorage and stuff. Lorem
+				ipsum dolor sit amet consectetur adipisicing elit. Obcaecati id
+				dicta qui delectus quasi sunt voluptatibus temporibus expedita
+				sint iste eaque numquam, et tempora quo quia error facilis!
+				Beatae, expedita!
+			</h2>
+		</BlockSingleColumn>
+	</HeroImageScroll>
 	<style>
 		h2 {
 			color: white;
@@ -111,9 +122,16 @@ import { BlockPaddingWrapper } from "@rkn/page-components";
 			display: flex;
 			justify-content: center;
 		}
+		h2.small {
+			font-size: 32px;
+			text-shadow: 0 0 8px black;
+		}
 		@media (max-width: 640px) {
 			h2 {
 				font-size: 26px;
+			}
+			h2.small {
+				font-size: 22px;
 			}
 		}
 	</style>
