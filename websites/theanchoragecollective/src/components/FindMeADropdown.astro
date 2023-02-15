@@ -1,5 +1,6 @@
 ---
 const { buttonName } = Astro.props;
+import FindMeADropdownItem from "../components/FindMeADropdownItem.astro";
 ---
 
 <div class="FindMeADropdownWrapper_Outer">
@@ -13,7 +14,28 @@ const { buttonName } = Astro.props;
             <span>❯</span>
         </button>
         <ul>
-            <slot />
+            <FindMeADropdownItem
+                itemhref="/find-me-a/trainer"
+                itemName="Trainer"
+            />
+            <FindMeADropdownItem
+                itemhref="/find-me-a/supervisor"
+                itemName="Supervisor"
+            />
+            <FindMeADropdownItem
+                itemhref="/find-me-a/spiritual%20director"
+                itemName="Spiritual Director"
+            />
+            <FindMeADropdownItem
+                itemhref="/find-me-a/mentor"
+                itemName="Mentor"
+            />
+
+            <FindMeADropdownItem itemhref="/find-me-a/coach" itemName="Coach" />
+            <FindMeADropdownItem
+                itemhref="/find-me-a/counsellor"
+                itemName="Counsellor"
+            />
         </ul>
     </div>
 </div>
@@ -22,14 +44,15 @@ const { buttonName } = Astro.props;
     div.FindMeADropdownWrapper_Outer {
         position: relative;
         font-size: 16px;
-        width: 30vw;
-        height: 3.5rem;
+        width: 33vw;
+        height: 4rem;
+        padding-bottom: 6rem;
     }
     div.FindMeADropdownWrapper_Inner {
         position: absolute;
         z-index: 2;
-        width: 30vw;
-        height: 3.5rem;
+        width: 33vw;
+        height: 4rem;
     }
     li {
         display: flex;
@@ -41,11 +64,13 @@ const { buttonName } = Astro.props;
     }
     ul {
         flex-direction: column;
-        background-color: var(--banner-color);
+        background-color: white;
+        border: solid 1px var(--gunmetal);
         position: relative;
         transition: 0.25s;
         display: none;
         width: 100%;
+        border-radius: 4px;
     }
     ul.show {
         display: flex;
@@ -53,17 +78,22 @@ const { buttonName } = Astro.props;
     /*Button Styling*/
     button {
         display: inline-block;
-        border: none;
+        border: solid 1px var(--gunmetal);
         text-decoration: none;
         font-size: 1.4rem;
         cursor: pointer;
         text-align: center;
         background-color: white;
         width: 100%;
-        height: 3.5rem;
+        height: 4rem;
         color: var(--gunmetal);
         text-align: left;
         border-radius: 4px;
+    }
+    button:hover,
+    button:focus {
+        background-color: var(--gunmetal-tint);
+        color: black;
     }
     span {
         color: var(--gunmetal);
@@ -78,25 +108,22 @@ const { buttonName } = Astro.props;
         transform: rotate(-90deg);
         transition: 0.25s;
     }
-    @media (min-width: 917px) {
-        button {
-            padding: 0px 20px 0px 20px;
-            flex-basis: 50px;
-        }
-        li {
-            flex-basis: 50px;
-            align-self: flex-start;
-        }
-        ul {
-            align-items: center;
-        }
+    li {
+        flex-basis: 50px;
+        align-self: flex-start;
+    }
+    ul {
+        align-items: center;
+    }
+    button {
+        padding: 0px 20px 0px 20px;
+        flex-basis: 50px;
     }
     @media (max-width: 916px) {
-        button {
-            padding: 10px 0;
-        }
-        ul {
-            padding-left: 40%;
+        div.FindMeADropdownWrapper_Outer,
+        div.FindMeADropdownWrapper_Inner {
+            width: 50vw;
+            flex-basis: 40px;
         }
     }
 </style>

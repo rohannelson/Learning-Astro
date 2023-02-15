@@ -1,8 +1,7 @@
 ---
 import AnchorageBaseLayout from "../../layouts/AnchorageBaseLayout.astro";
 import { HeroBanner } from "@rkn/page-components";
-import { FindMeADropdown } from "@rkn/page-components";
-import { FindMeADropdownItem } from "@rkn/page-components";
+import FindMeADropdown from "../../components/FindMeADropdown.astro";
 const title = "Find Me A";
 const allRoles = await Astro.glob("../profiles/*.mdx");
 const roles = [
@@ -43,33 +42,7 @@ const roles = [
     >
         <div class="dropdown_wrapper_outer">
             <div class="dropdown_wrapper_inner">
-                <FindMeADropdown buttonName="Choose a service...">
-                    <FindMeADropdownItem
-                        itemhref="/find-me-a/trainer"
-                        itemName="Trainer"
-                    />
-                    <FindMeADropdownItem
-                        itemhref="/find-me-a/supervisor"
-                        itemName="Supervisor"
-                    />
-                    <FindMeADropdownItem
-                        itemhref="/find-me-a/spiritual%20director"
-                        itemName="Spiritual Director"
-                    />
-                    <FindMeADropdownItem
-                        itemhref="/find-me-a/mentor"
-                        itemName="Mentor"
-                    />
-
-                    <FindMeADropdownItem
-                        itemhref="/find-me-a/coach"
-                        itemName="Coach"
-                    />
-                    <FindMeADropdownItem
-                        itemhref="/find-me-a/counsellor"
-                        itemName="Counsellor"
-                    />
-                </FindMeADropdown>
+                <FindMeADropdown buttonName="Choose a service..." />
             </div>
         </div>
     </HeroBanner>
