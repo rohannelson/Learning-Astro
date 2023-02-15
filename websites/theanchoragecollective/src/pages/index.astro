@@ -1,7 +1,11 @@
 ---
 import AnchorageBaseLayout from "../layouts/AnchorageBaseLayout.astro";
 import { HeroImage } from "@rkn/page-components";
-import { SingleColumnBlock } from "@rkn/page-components";
+import { BlockSingleColumn } from "@rkn/page-components";
+import FindMeADropdown from "../components/FindMeADropdown.astro";
+import { BlockDoubleColumn } from "@rkn/page-components";
+import { SectionWrapper } from "@rkn/page-components";
+import { BlockPaddingWrapper } from "@rkn/page-components";
 ---
 
 <AnchorageBaseLayout>
@@ -11,37 +15,106 @@ import { SingleColumnBlock } from "@rkn/page-components";
 			Shape your ministry
 		</h2>
 	</HeroImage>
-	<SingleColumnBlock>
-		<h2>A heading</h2>
-		<h3>A subheading</h3>
-		<p>
-			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero et
-			minima nisi veritatis, necessitatibus in inventore unde atque a.
-			Accusamus perferendis amet facere suscipit illum ipsum, possimus ab
-			aliquid rerum?
-		</p>
-	</SingleColumnBlock>
-</AnchorageBaseLayout>
-<style>
-	h2 {
-		color: white;
-		text-shadow: 0 0 8px black;
-		z-index: 1;
-		transition: 0.25s;
-		font-size: 36px;
-		text-align: center;
-	}
-	h2.hero {
-		margin-top: max(40vh, calc(var(--header-height) + 60px));
-		padding: 0;
-	}
-	h3,
-	p {
-		color: white;
-	}
-	@media (max-width: 640px) {
+	<SectionWrapper backgroundColor="var(--anchorage-blue)">
+		<BlockSingleColumn>
+			<h2>Our Heart</h2>
+			<h4 style="color: white">
+				<em
+					>Journeying alongside people for growth; in Christ, in
+					calling, in our identity.</em
+				>
+			</h4>
+		</BlockSingleColumn>
+		<BlockDoubleColumn>
+			<BlockPaddingWrapper>
+				<h3>Watup</h3>
+				<p>
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+					Vero et minima nisi veritatis, necessitatibus in inventore
+					unde atque a. Accusamus perferendis amet facere suscipit
+					illum ipsum, possimus ab aliquid rerum?
+				</p>
+			</BlockPaddingWrapper>
+			<BlockPaddingWrapper>
+				<h3>Homies</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+					Labore dignissimos quia natus deserunt. Numquam, quo culpa!
+					Debitis pariatur autem ipsa eius cupiditate delectus, fugit,
+					expedita consequatur odit magnam magni iste?
+				</p>
+			</BlockPaddingWrapper>
+		</BlockDoubleColumn>
+		<BlockSingleColumn>
+			<div class="FindMeAWrapper">
+				<FindMeADropdown buttonName="Find me a..." />
+			</div>
+		</BlockSingleColumn>
+	</SectionWrapper>
+	<SectionWrapper backgroundColor="var(--gunmetal)">
+		<BlockSingleColumn>
+			<h5 style="color: white; padding: 1rem; text-align: center;">
+				We would love to kep you up to date with what's coming soon at
+				The Anchorage!
+			</h5>
+			<div class="flex_center">
+				<a
+					class="callToAction"
+					href="http://eepurl.com/h5wagT"
+					target="_blank"
+					>Click here to subscribe to our mailing list</a
+				>
+			</div>
+		</BlockSingleColumn>
+	</SectionWrapper>
+
+	<style>
 		h2 {
-			font-size: 26px;
+			color: white;
+			z-index: 1;
+			transition: 0.25s;
+			font-size: 36px;
+			text-align: center;
 		}
-	}
-</style>
+		h2.hero {
+			margin-top: max(40vh, calc(var(--header-height) + 60px));
+			padding: 0;
+			text-shadow: 0 0 8px black;
+		}
+		h3,
+		p {
+			color: white;
+		}
+		div.FindMeAWrapper {
+			padding-top: 2rem;
+		}
+		a.callToAction {
+			margin: 2rem;
+			padding: 1rem;
+			text-align: center;
+			font-size: 18px;
+			/*background-color: var(--anchorage-blue);*/
+			border-radius: 10px;
+			border: solid 1px white;
+			color: white;
+			text-decoration: none;
+			transition: 0.25s;
+		}
+		a.callToAction:hover,
+		a.callToAction:focus {
+			background-color: white;
+			color: black;
+			transform: scale(1.05);
+			transition: 0.25s;
+		}
+		div.flex_center {
+			display: flex;
+			justify-content: center;
+		}
+		@media (max-width: 640px) {
+			h2 {
+				font-size: 26px;
+			}
+		}
+	</style>
+</AnchorageBaseLayout>
