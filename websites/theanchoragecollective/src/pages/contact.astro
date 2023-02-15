@@ -1,14 +1,23 @@
 ---
 import AnchorageBaseLayout from "../layouts/AnchorageBaseLayout.astro";
-import { GoogleMaps } from "@rkn/page-components";
+import {
+    GoogleMaps,
+    BlockDoubleColumn,
+    SectionWrapper,
+    BlockPaddingWrapper,
+    HeroBannerShallow,
+} from "@rkn/page-components";
 ---
 
 <AnchorageBaseLayout>
-    <div class="padding-top">&nbsp;</div>
+    <HeroBannerShallow
+        BackgroundImage="images/HeaderImage.jpg"
+        HeroText="Get in Touch!"
+    />
     <div class="container-outer">
         <div class="container-inner">
             <div>
-                <div style="max-width: 60vw;">
+                <div class="address">
                     <h2>Anchoring</h2>
                     <p>
                         Unless otherwise noted, group and individual work are
@@ -24,7 +33,7 @@ import { GoogleMaps } from "@rkn/page-components";
                 </div>
             </div>
             <div>
-                <img src="/images/ColourLogo.png" />
+                <img class="logo" src="/images/ColourLogo.png" />
             </div>
             <div class="map-container">
                 <div>
@@ -50,27 +59,31 @@ import { GoogleMaps } from "@rkn/page-components";
     </div>
 </AnchorageBaseLayout>
 <style>
-    div.padding-top {
-        height: var(--header-height);
-        transition: 0.25s;
-    }
     div.container-outer {
         display: flex;
         align-items: center;
         justify-content: center;
+        align-items: center;
         flex-direction: column;
-        padding: 2vw 10vw 3vw 10vw;
+        padding: 2vw 4vw 0 4vw;
     }
     div.container-inner {
         display: grid;
-        width: 100%;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 40vw);
         justify-items: center;
         align-items: center;
     }
     @media (max-width: 915px) {
         div.container-inner {
             grid-template-columns: 1fr;
+        }
+        img.logo {
+            display: none;
+        }
+    }
+    @media (min-width: 639px) {
+        div.address {
+            margin-right: 10vw;
         }
     }
     .container-inner div {
@@ -80,10 +93,15 @@ import { GoogleMaps } from "@rkn/page-components";
     .container-inner > div {
         display: flex;
         justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding-bottom: 2rem;
     }
+
     img {
-        max-width: 100%;
-        max-height: 100%;
+        width: auto;
+        height: 240px;
+        margin: 0 auto;
     }
     h2 {
         color: #51534a;
@@ -93,10 +111,17 @@ import { GoogleMaps } from "@rkn/page-components";
     h5 {
         color: #51534a;
     }
+
+    /*FORM FORMATTING*/
     div.form-container {
-        padding: 0 8rem;
         display: flex;
         flex-direction: column;
+        width: 100%;
+    }
+    @media (min-width: 916px) {
+        div.form-container {
+            margin-left: 10rem;
+        }
     }
     label {
         display: block;
@@ -107,17 +132,26 @@ import { GoogleMaps } from "@rkn/page-components";
     form {
         display: flex;
         flex-direction: column;
+        min-width: 100%;
     }
     input {
-        font-size: 16px;
+        font-size: 18px;
+        padding: 0.5rem;
+        border: solid 1px var(--gunmetal-tint);
+        border-radius: 4px;
+        margin-bottom: 1rem;
     }
     textarea {
         min-height: 150px;
+        border: solid 1px var(--gunmetal-tint);
     }
     [type="submit"] {
         background-color: #51534a;
         font-size: 18px;
         width: min-content;
         padding: 1rem;
+        margin: 1rem 0;
+        color: white;
+        border-radius: 4px;
     }
 </style>
