@@ -6,7 +6,9 @@ const backgroundImageVar = `url("` + BackgroundImage + `")`;
 
 <section>
     <div class="backgroundImage">
-        <slot />
+        <div class="contents-wrapper">
+            <slot />
+        </div>
     </div>
 </section>
 <style define:vars={{ backgroundImageVar }}>
@@ -29,5 +31,9 @@ const backgroundImageVar = `url("` + BackgroundImage + `")`;
         align-items: center;
         justify-content: center;
         padding-bottom: 4rem;
+    }
+    :global(div.contents-wrapper) {
+        max-width: 750px;
+        margin: 0 2rem;
     }
 </style>

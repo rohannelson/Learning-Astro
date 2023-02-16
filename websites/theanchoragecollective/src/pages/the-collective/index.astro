@@ -1,31 +1,41 @@
 ---
-import AnchorageBaseLayout from "../layouts/AnchorageBaseLayout.astro";
+import AnchorageBaseLayout from "../../layouts/AnchorageBaseLayout.astro";
 import { HeroBanner } from "@rkn/page-components";
-const allBlogs = await Astro.glob("./blog/*.mdx");
-const title = "Moorings";
+import { IconEmail } from "@rkn/base-components";
+const allProfiles = await Astro.glob("./*.mdx");
+const title = "Profiles";
 ---
 
 <AnchorageBaseLayout title={title}>
-    <HeroBanner BackgroundImage="images/HeaderImage.jpg" HeroText="Moorings." />
+    <HeroBanner
+        BackgroundImage="images/HeaderImage.jpg"
+        HeroText="A collective of expert practitioners seeking to equip others in transforming, growing, and bridging the gap between aspiration and reality."
+    />
     <div class="container">
-        <h2>Moorings</h2>
-        <p><em>Thoughtful musings from thoughtful people</em></p>
+        <h2>OUR COLLECTIVE</h2>
+        <p><em>Supervisors, Mentors, Practitioners, Spiritual Directors</em></p>
     </div>
     <ul>
         {
-            allBlogs.map((blog) => (
+            allProfiles.map((profile) => (
                 <li>
-                    <a href={blog.url}>
+                    <a href={profile.url}>
                         <img
-                            src={blog.frontmatter.image
+                            src={profile.frontmatter.image
                                 .split(".")
                                 .join("-thumb.")}
                         />
                     </a>
-                    <a href={blog.url}>
-                        <h3>{blog.frontmatter.title}</h3>
+                    <a href={profile.url}>
+                        <h3>{profile.frontmatter.name}</h3>
                     </a>
-                    <p>{blog.frontmatter.excerpt}</p>
+                    <p>{profile.frontmatter.excerpt}</p>
+                    <div class="profile_icon_container">
+                        <IconEmail
+                            iconemail={profile.frontmatter.email}
+                            class="profile_icon"
+                        />
+                    </div>
                 </li>
             ))
         }
@@ -75,11 +85,11 @@ const title = "Moorings";
         height: auto;
         border-radius: 100%;
     }
-    .blog_icon_container {
+    .profile_icon_container {
         margin: auto auto 0 auto;
         display: flex;
     }
-    :global(.blog_icon_container svg) {
+    :global(.profile_icon_container svg) {
         fill: var(--gunmetal);
     }
     @media (max-width: 915px) {

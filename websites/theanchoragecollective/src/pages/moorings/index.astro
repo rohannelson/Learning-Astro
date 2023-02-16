@@ -1,41 +1,31 @@
 ---
-import AnchorageBaseLayout from "../layouts/AnchorageBaseLayout.astro";
+import AnchorageBaseLayout from "../../layouts/AnchorageBaseLayout.astro";
 import { HeroBanner } from "@rkn/page-components";
-import { IconEmail } from "@rkn/base-components";
-const allProfiles = await Astro.glob("./profiles/*.mdx");
-const title = "Profiles";
+const allBlogs = await Astro.glob("./*.mdx");
+const title = "Moorings";
 ---
 
 <AnchorageBaseLayout title={title}>
-    <HeroBanner
-        BackgroundImage="images/HeaderImage.jpg"
-        HeroText="A collective of expert practitioners seeking to equip others in transforming, growing, and bridging the gap between aspiration and reality."
-    />
+    <HeroBanner BackgroundImage="images/HeaderImage.jpg" HeroText="Moorings." />
     <div class="container">
-        <h2>OUR COLLECTIVE</h2>
-        <p><em>Supervisors, Mentors, Practitioners, Spiritual Directors</em></p>
+        <h2>Moorings</h2>
+        <p><em>Thoughtful musings from thoughtful people</em></p>
     </div>
     <ul>
         {
-            allProfiles.map((profile) => (
+            allBlogs.map((blog) => (
                 <li>
-                    <a href={profile.url}>
+                    <a href={blog.url}>
                         <img
-                            src={profile.frontmatter.image
+                            src={blog.frontmatter.image
                                 .split(".")
                                 .join("-thumb.")}
                         />
                     </a>
-                    <a href={profile.url}>
-                        <h3>{profile.frontmatter.name}</h3>
+                    <a href={blog.url}>
+                        <h3>{blog.frontmatter.title}</h3>
                     </a>
-                    <p>{profile.frontmatter.excerpt}</p>
-                    <div class="profile_icon_container">
-                        <IconEmail
-                            iconemail={profile.frontmatter.email}
-                            class="profile_icon"
-                        />
-                    </div>
+                    <p>{blog.frontmatter.excerpt}</p>
                 </li>
             ))
         }
@@ -83,13 +73,13 @@ const title = "Profiles";
     img {
         max-width: 200px;
         height: auto;
-        border-radius: 100%;
+        border-radius: 4px;
     }
-    .profile_icon_container {
+    .blog_icon_container {
         margin: auto auto 0 auto;
         display: flex;
     }
-    :global(.profile_icon_container svg) {
+    :global(.blog_icon_container svg) {
         fill: var(--gunmetal);
     }
     @media (max-width: 915px) {
