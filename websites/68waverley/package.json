@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^0.16.0",
-    "@rkn/shared-components": "file:../../shared-components/",
     "astro": "^2.0.6"
   }
 }
