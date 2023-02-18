@@ -3,7 +3,7 @@ import AnchorageBaseLayout from "../../layouts/AnchorageBaseLayout.astro";
 import { HeroBanner } from "@rkn/page-components";
 import { IconEmail } from "@rkn/base-components";
 export async function getStaticPaths() {
-    const allProfiles = await Astro.glob("../profiles/*.mdx");
+    const allProfiles = await Astro.glob("../the-collective/*.mdx");
 
     return [
         { params: { service: "supervisor" }, props: { profiles: allProfiles } },

@@ -3,7 +3,7 @@ import AnchorageBaseLayout from "../../layouts/AnchorageBaseLayout.astro";
 import { HeroBanner } from "@rkn/page-components";
 import FindMeADropdown from "../../components/FindMeADropdown.astro";
 const title = "Find Me A";
-const allRoles = await Astro.glob("../profiles/*.mdx");
+const allRoles = await Astro.glob("../the-collective/*.mdx");
 const roles = [
     ...new Set(allRoles.map((role) => role.frontmatter.services).flat()),
 ];

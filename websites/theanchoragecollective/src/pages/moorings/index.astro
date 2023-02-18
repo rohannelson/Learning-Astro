@@ -1,12 +1,15 @@
 ---
 import AnchorageBaseLayout from "../../layouts/AnchorageBaseLayout.astro";
-import { HeroBanner } from "@rkn/page-components";
+import { HeroBannerShallow } from "@rkn/page-components";
 const allBlogs = await Astro.glob("./*.mdx");
 const title = "Moorings";
 ---
 
 <AnchorageBaseLayout title={title}>
-    <HeroBanner BackgroundImage="images/HeaderImage.jpg" HeroText="Moorings." />
+    <HeroBannerShallow
+        BackgroundImage="images/HeaderImage.jpg"
+        HeroText="Moorings."
+    />
     <div class="container">
         <h2>Moorings</h2>
         <p><em>Thoughtful musings from thoughtful people</em></p>
