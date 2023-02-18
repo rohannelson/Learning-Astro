@@ -20,7 +20,7 @@ const BackgroundImageLge = `${BackgroundImage} + "1920w"`;
         />
         <img src={BackgroundImage} />
     </picture>
-    <h2>{HeroText}</h2>
+    <h1>{HeroText}</h1>
     <slot />
 </section>
 <style>
@@ -48,7 +48,7 @@ const BackgroundImageLge = `${BackgroundImage} + "1920w"`;
         top: 0px;
         left: 0px;
     }
-    h2 {
+    h1 {
         color: white;
         text-shadow: 0 0 8px black;
         z-index: 1;
@@ -60,12 +60,12 @@ const BackgroundImageLge = `${BackgroundImage} + "1920w"`;
         padding: 0 0 4rem;
     }
     @media (max-width: 915px) {
-        h2 {
+        h1 {
             font-size: 30px;
         }
     }
     @media (max-width: 640px) {
-        h2 {
+        h1 {
             font-size: 23px;
             max-width: 90%;
             margin-top: max(30vh, calc(var(--header-height) + 35px));
